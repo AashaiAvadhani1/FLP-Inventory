@@ -4,6 +4,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
+from django.db.models.signals import pre_save
 
 from django.utils import timezone
 
@@ -58,7 +59,8 @@ class Item(models.Model):
   new_price = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
   used_price = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
   quantity = models.IntegerField(default=0)
-  
+  outdated = models.BooleanField(default=True, blank=False, null=False)
+
   def __str__(self):
     return "{}".format(self.name)
 

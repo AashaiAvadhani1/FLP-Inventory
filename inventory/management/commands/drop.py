@@ -55,4 +55,4 @@ class Command(BaseCommand):
         self._destroy_categories()
         self._destroy_age_ranges()
         self._destroy_families()
-        self._destroy_users()
+        # self._destroy_users()
