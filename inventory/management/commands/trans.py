@@ -25,14 +25,23 @@ class Command(BaseCommand):
                 print(name)
                 if name.startswith("boys "):
                     name_new = name[len("boys "):]
+                    item_mapped = name_new.split()[0]
                 elif name.startswith("girls "):
                     name_new = name[len("girls "):]
-                print(name_new)
-                item_mapped = name_new.split()[0]
+                    item_mapped = name_new.split()[0]
+                elif name.endswith("boy)"):
+                    name_new = name
+                    item_mapped = name.split()[0]
+                elif name.endswith("girls)"):
+                    name_new = name
+                    item_mapped = name.split()[0]
+
+                #print(item_mapped)
                 if (len(name_new.split()) > 1) and name_new.split()[1] == "socks":
                     item_mapped = "socks"
-                if ("snowsuit" in item_mapped):
+                if ("snowsuit" in item_mapped):  #this branch is to cope with one typo, no subtle way to put this.
                     item_mapped = "snowsuit"
+                
                 print(item_mapped)
 
                 if ("teen" in name_new) or ("14-16" in name_new) or ("18-20" in name_new):
@@ -68,22 +77,28 @@ class Command(BaseCommand):
                     name_new = name
                     item_mapped = name.split()[0]
 
-                print(item_mapped)
+                #print(item_mapped)
+                item_mapped = item_mapped.lower()
                 if (len(name_new.split()) > 1) and name_new.split()[1] == "socks":
                     item_mapped = "socks"
                 if ("snowsuit" in item_mapped):  #this branch is to cope with one typo, no subtle way to put this.
                     item_mapped = "snowsuit"
-                if not(item_mapped in NEW_ITEM_NAMES):
-                    NEW_ITEM_NAMES.append(item_mapped)
-
                 #TODO: add same item merges, e.g. coat, jacket -> coat/jacket
+                if ("coat" in item_mapped) or ("jacket" in item_mapped):
+                    item_mapped = "coat/jacket"
+                if "pj" in item_mapped:
+                    item_mapped = "pj"
 
-                # for item in NEW_ITEM_NAMES:
-                #     for size in NEW_SIZES:
-                #         Item.objects.create(name=item+" "+size, quantity=0)
+                if not(item_mapped in Command.NEW_ITEM_NAMES):
+                    Command.NEW_ITEM_NAMES.append(item_mapped)
 
-                for item in NEW_ITEM_NAMES:
-                    print(item)
+        for item in Command.NEW_ITEM_NAMES:
+            print(item)
+        for item in Command.NEW_ITEM_NAMES:
+            for size in Command.NEW_SIZES:
+                print("creating item: "+ item+" "+size +" \n")
+                Item.objects.create(name=item+" "+size, quantity=0)
+                print("created item: "+ item+" "+size +" \n")
             
 
     def _add_outdated(self):
