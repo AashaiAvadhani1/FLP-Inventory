@@ -6,9 +6,11 @@ import re
 
 class Command(BaseCommand):
     args = '<this func takes no args>'
-    help = 'Run this script to change old database into newly designed one.'
+    help = 'Run this script to migrate old database into newly designed one.'
 
-    NEW_ITEM_NAMES = ["shirt", "shoes", "underwear", "socks", "pj", "shorts", "pants", "sweater/sweartshirt", "coat", "dress/skirt", "accessories", "other", "snowsuit", "onesie"]
+    #NEW_ITEM_NAMES = ["shirt", "shoes", "underwear", "socks", "pj", "shorts", "pants", "sweater/sweartshirt", "coat/jacket", "dress/skirt", "accessories", "other", "snowsuit", "onesie"]
+    NEW_ITEM_NAMES = []
+    NEW_SIZES = ["baby", "toddler", "kid", "teen"]
 
     def map(itemName):
         if itemName == "snowsuit":
@@ -55,19 +57,34 @@ class Command(BaseCommand):
             if x:
                 if name.startswith("boys "):
                     name_new = name[len("boys "):]
+                    item_mapped = name_new.split()[0]
                 elif name.startswith("girls "):
                     name_new = name[len("girls "):]
-                elif 
+                    item_mapped = name_new.split()[0]
+                elif name.endswith("boy)"):
+                    name_new = name
+                    item_mapped = name.split()[0]
+                elif name.endswith("girls)"):
+                    name_new = name
+                    item_mapped = name.split()[0]
 
-                item_mapped = name_new.split()[0]
+                print(item_mapped)
                 if (len(name_new.split()) > 1) and name_new.split()[1] == "socks":
                     item_mapped = "socks"
-                if ("snowsuit" in item_mapped):
+                if ("snowsuit" in item_mapped):  #this branch is to cope with one typo, no subtle way to put this.
                     item_mapped = "snowsuit"
-                if !(item_mapped in NEW_ITEM_NAMES):
+                if not(item_mapped in NEW_ITEM_NAMES):
+                    NEW_ITEM_NAMES.append(item_mapped)
 
-        for item in NEW_ITEM_NAMES:
-            Item.objects.create(name=item_name, quantity=0)
+                #TODO: add same item merges, e.g. coat, jacket -> coat/jacket
+
+                # for item in NEW_ITEM_NAMES:
+                #     for size in NEW_SIZES:
+                #         Item.objects.create(name=item+" "+size, quantity=0)
+
+                for item in NEW_ITEM_NAMES:
+                    print(item)
+            
 
     def _add_outdated(self):
         for t in Item.objects.all():
@@ -83,10 +100,10 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
-        self._add_outdated()
+        # self._add_outdated()
         self._add_items()
-        self._update_items()
-        self._update_checkins()
+        # self._update_items()
+        # self._update_checkins()
         # self._update_checkouts()
         # self._update_item_transactions()
         # self._update_categories()
