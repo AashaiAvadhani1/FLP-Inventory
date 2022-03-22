@@ -12,6 +12,7 @@ import os
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'flp.settings')
-os.environ["SECRET_KEY"] = "pass"
+os.environ["DJANGO_SECRET_KEY"] = "pass"
+os.environ["EMAIL_APP_KEY"] ="pass"
 
 application = get_wsgi_application()
