@@ -34,6 +34,10 @@ class Command(BaseCommand):
                 item_mapped = "socks"
             if ("snowsuit" in item_mapped):  #this branch is to cope with one typo, no subtle way to put this.
                 item_mapped = "snowsuit"
+            if ("coat" in item_mapped) or ("jacket" in item_mapped):
+                    item_mapped = "coat/jacket"
+            if "pj" in item_mapped:
+                    item_mapped = "pj"
 
             if ("teen" in name_new) or ("14-16" in name_new) or ("18-20" in name_new):
                 size_mapped = "teen"
