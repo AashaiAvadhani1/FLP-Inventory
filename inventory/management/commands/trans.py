@@ -14,8 +14,37 @@ class Command(BaseCommand):
     NEW_SIZES = ["baby", "toddler", "kid", "teen"]
 
     def map(itemName):
-        if itemName == "snowsuit":
-            return "coat"
+        x = re.match("^(boys|girls)", itemName)
+        if x:
+            if itemName.startswith("boys "):
+                name_new = itemName[len("boys "):]
+                item_mapped = name_new.split()[0]
+            elif itemName.startswith("girls "):
+                name_new = itemName[len("girls "):]
+                item_mapped = name_new.split()[0]
+            elif itemName.endswith("boy)"): 
+                name_new = itemName
+                item_mapped = name_new.split()[0]
+            elif itemName.endswith("girls)"):
+                name_new = itemName
+                item_mapped = name_new.split()[0]
+
+            #print(item_mapped)
+            if (len(name_new.split()) > 1) and name_new.split()[1] == "socks":
+                item_mapped = "socks"
+            if ("snowsuit" in item_mapped):  #this branch is to cope with one typo, no subtle way to put this.
+                item_mapped = "snowsuit"
+
+            if ("teen" in name_new) or ("14-16" in name_new) or ("18-20" in name_new):
+                size_mapped = "teen"
+            elif ("kid" in name_new) or ("6-7" in name_new) or ("8-10" in name_new) or ("10-12" in name_new) or ("12-14" in name_new):
+                size_mapped = "kid"
+            elif ("infant" in name_new) or (" mo" in name_new):
+                size_mapped = "baby"
+            elif ("2T-3T" in name_new) or ("4T-5T" in name_new):
+                size_mapped = "toddler"
+                
+            return item_mapped, size_mapped
 
 
     def _update_items(self):
