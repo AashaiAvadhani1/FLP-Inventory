@@ -49,7 +49,7 @@ jobs:
       run: |
         coverage run --omit=*/tests/* --source=hc manage.py test
     - name: Coveralls
-      if: matrix.db == 'postgres' && matrix.python-version == '3.8'
+      if: matrix.db == 'postgres' && matrix.python-version == '3.9'
       run: coveralls
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
