@@ -1,7 +1,6 @@
-from unicodedata import category
 from django.core.management.base import BaseCommand
 #from inventory.models import User, Family, Category, Item, ItemTransaction, Checkin, Checkout, AgeRange
-from inventory.models import Item, Checkin
+from inventory.models import Item, ItemTransaction
 
 # MIGRATION SCRIPT
 
@@ -92,31 +91,32 @@ class Command(BaseCommand):
                 item_new.quantity = newQuantity
                 item_new.save()         
          
-    def _update_checkins(self):
-        for ins in Checkin.objects.all():
-            for item in ins.items:
-                print(ins)
-                item_mapped, size_mapped = map(item.name)
-                newItem = Item.objects.get(name = item_mapped + " " + size_mapped)
-                
+    # def _update_checkins(self):
+    #     for ins in Checkin.objects.all():
+    #         newItemList = []
+    #         for item in ins.items:
+    #             print(ins)
+    #             item_mapped, size_mapped = map(item.name)
+    #             newItem = Item.objects.get(name = item_mapped + " " + size_mapped)
+    #             newItemList.append(newItem)
+            
+    # def _update_checkouts(self):
+    #     for ins in Checkin.objects.all():
+    #         print(ins)
 
-    def _update_checkouts(self):
-        for ins in Checkin.objects.all():
-            print(ins)
+    def _update_item_transaction(self):
+        for ins in ItemTransaction.objects.all():
+            itemOld = Item.objects.get(id = ins.item_id)
+            if ("boys" in itemOld.name) or ("girls" in itemOld.name):
+                item_mapped, size_mapped = Command.itemMap(itemOld.name)
+                item_new = Item.objects.get(name = item_mapped + " " + size_mapped)
+                ins.item_id = item_new.id
+                ins.save()
 
-    def _update_itemtransaction(self):
-        for ins in Checkin.objects.all():
-            print(ins)
             
     def handle(self, *args, **options):
-        self._add_outdated()
-        self._add_newitems()
-        self._update_newitems()
-        # self._update_checkins()
-        # self._update_checkouts()
-        # self._update_item_transactions()
-        # self._update_categories()
-        # self._update_age_ranges()
-        # self._update_families()
-        # self._update_users()
+        # self._add_outdated()
+        # self._add_newitems()
+        # self._update_newitems()
+        self._update_item_transaction()
 
