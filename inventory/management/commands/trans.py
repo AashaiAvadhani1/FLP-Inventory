@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.core.management.base import BaseCommand
 #from inventory.models import User, Family, Category, Item, ItemTransaction, Checkin, Checkout, AgeRange
 from inventory.models import Item, Checkin
@@ -12,7 +13,7 @@ class Command(BaseCommand):
     NEW_ITEM_NAMES = []
     NEW_SIZES = ["baby", "toddler", "kid", "teen"]
 
-    def map(itemName):
+    def itemMap(itemName):
         item_mapped = "" 
         size_mapped = ""
         if ("boy" in itemName) or ("girl" in itemName):
@@ -44,56 +45,73 @@ class Command(BaseCommand):
                 size_mapped = "kid"
             elif ("infant" in name_new) or (" mo" in name_new) or ("baby" in name_new):
                 size_mapped = "baby"
-            elif ("2T-3T" in name_new) or ("4T-5T" in name_new) or ("toddler" in name_new):
+            elif ("T" in name_new) or ("toddler" in name_new):
                 size_mapped = "toddler"
-
+            else:
+                size_mapped = "kid"
+            #print(itemName, item_mapped, size_mapped, "\n")
         else:
             raise Exception("ill-formatted input string")
         return item_mapped, size_mapped
 
 
-    def _update_items(self):
+    def _add_outdated(self):
+        for t in Item.objects.all():
+            if ("boy" in t.name) or ("girl" in t.name):
+                t.outdated = True
+                t.save()
+        print("Items updated.\n")
+
+    def _add_newitems(self):
         for t in Item.objects.all():
             name = t.name
             if ("boys" in name) or ("girls" in name):
-                item_mapped, size_mapped = map(name)
-                item_new = Item.object.filter(name == item_mapped + " " + size_mapped)
-                item_new.quantity += (t.quantity if t.quantity>0 else 0)
-
-
-    def _add_items(self):
-        for t in Item.objects.all():
-            name = t.name
-            if ("boys" in name) or ("girls" in name):
-                item_mapped, size_mapped = map(name)
+                item_mapped, size_mapped = Command.itemMap(name)
                 if not(item_mapped in Command.NEW_ITEM_NAMES):
                     Command.NEW_ITEM_NAMES.append(item_mapped)
-        # for item in Command.NEW_ITEM_NAMES:
-        #     print(item)
+        print("all new items to be created:",  Command.NEW_ITEM_NAMES, "\n")
         for item in Command.NEW_ITEM_NAMES:
             for size in Command.NEW_SIZES:
                 # print("creating item: "+ item+" "+size +" \n")
-                Item.objects.create(name=item+" "+size, quantity=0)
-                print("created item: "+ item+" "+size +" \n")
-            
-
-    def _add_outdated(self):
+                if (item == "bra") and (size == "baby" or size == "toddler"):
+                    continue
+                Item.objects.create(name=item + " " + size, quantity=0)
+                # TODO: add default category Category.objects.get(name__exact="Clothing")
+                print("created item: "+ item + " "+size +" \n")
+                    
+    def _update_newitems(self):
         for t in Item.objects.all():
-            print(t.outdated)
-            t.outdated = False
-            print(t.outdated)
-
-        print("Items update.")
-
+            name = t.name
+            if ("boys" in name) or ("girls" in name):
+                item_mapped, size_mapped = Command.itemMap(name)
+                print(item_mapped + " " + size_mapped)
+                item_new = Item.objects.get(name = item_mapped + " " + size_mapped)
+                print(t.name, " qutity: ", t.quantity, "\n")
+                print(item_new.name, " quantity: ", item_new.quantity, "\n")
+                newQuantity = item_new.quantity + (t.quantity if t.quantity>0 else 0)
+                item_new.quantity = newQuantity
+                item_new.save()         
+         
     def _update_checkins(self):
+        for ins in Checkin.objects.all():
+            for item in ins.items:
+                print(ins)
+                item_mapped, size_mapped = map(item.name)
+                newItem = Item.objects.get(name = item_mapped + " " + size_mapped)
+                
+
+    def _update_checkouts(self):
         for ins in Checkin.objects.all():
             print(ins)
 
-
+    def _update_itemtransaction(self):
+        for ins in Checkin.objects.all():
+            print(ins)
+            
     def handle(self, *args, **options):
-        # self._add_outdated()
-        self._add_items()
-        # self._update_items()
+        self._add_outdated()
+        self._add_newitems()
+        self._update_newitems()
         # self._update_checkins()
         # self._update_checkouts()
         # self._update_item_transactions()
@@ -102,35 +120,3 @@ class Command(BaseCommand):
         # self._update_families()
         # self._update_users()
 
-
-# WANT: Baby, kid, toddler, teen
-
-# From Tomas Viejobueno to Everyone 11:33 AM
-# CURRENT: 0-24 mo -> baby
-# 2-14-> kid
-# 14-20 -> teen
-# 2-5 -> toddler
-# 6-14 -> kid
-# 14-20 -> teen
-# 2-5, infant -> toddler
-# 0-24 mo, infant -> baby
-# 2T-5T, toddler -> toddler
-# 6-14, kid -> kid
-# 14-20, teen -> teen
-
-# From Harriet Khang to Everyone 11:40 AM
-# Shirt 
-# Pant
-# Underwear
-# Socks 
-# Pjs
-# Shoe
-# Toy		
-# Blanket
-# Hygiene kit 
-# Stuffed Animal
-
-# From Tomas Viejobueno to Everyone 11:41 AM
-# Items: shirt, shoes, underwear, socks, pjs, shorts, pants, sweater, coat/jacket, dress/skirt
-
-# aggregate all checkouts items, delete others
