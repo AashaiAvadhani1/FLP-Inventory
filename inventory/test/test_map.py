@@ -9,7 +9,7 @@ class CheckoutMapTestCase(TestCase):
         self.assertRaises(Exception, trans.Command.map, invalidName1)
         self.assertRaises(Exception, trans.Command.map, invalidName2)
 
-    def test_invalid_input(self):
+    def test_valid_input(self):
         validName1 = "shorts (baby boy)"
         validName2 = "girls shoes kid 6"
         item1, size1 = trans.Command.map(validName1)
