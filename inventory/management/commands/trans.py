@@ -14,8 +14,9 @@ class Command(BaseCommand):
     NEW_SIZES = ["baby", "toddler", "kid", "teen"]
 
     def map(itemName):
-        x = re.match("^(boys|girls)", itemName)
-        if x:
+        item_mapped = "" 
+        size_mapped = ""
+        if ("boy" in itemName) or ("girl" in itemName):
             if itemName.startswith("boys "):
                 name_new = itemName[len("boys "):]
                 item_mapped = name_new.split()[0]
@@ -25,11 +26,10 @@ class Command(BaseCommand):
             elif itemName.endswith("boy)"): 
                 name_new = itemName
                 item_mapped = name_new.split()[0]
-            elif itemName.endswith("girls)"):
+            elif itemName.endswith("girl)"):
                 name_new = itemName
                 item_mapped = name_new.split()[0]
 
-            #print(item_mapped)
             if (len(name_new.split()) > 1) and name_new.split()[1] == "socks":
                 item_mapped = "socks"
             if ("snowsuit" in item_mapped):  #this branch is to cope with one typo, no subtle way to put this.
@@ -43,94 +43,37 @@ class Command(BaseCommand):
                 size_mapped = "teen"
             elif ("kid" in name_new) or ("6-7" in name_new) or ("8-10" in name_new) or ("10-12" in name_new) or ("12-14" in name_new):
                 size_mapped = "kid"
-            elif ("infant" in name_new) or (" mo" in name_new):
+            elif ("infant" in name_new) or (" mo" in name_new) or ("baby" in name_new):
                 size_mapped = "baby"
-            elif ("2T-3T" in name_new) or ("4T-5T" in name_new):
+            elif ("2T-3T" in name_new) or ("4T-5T" in name_new) or ("toddler" in name_new):
                 size_mapped = "toddler"
-                
-            return item_mapped, size_mapped
+
+        else:
+            raise Exception("ill-formatted input string")
+        return item_mapped, size_mapped
 
 
     def _update_items(self):
         for t in Item.objects.all():
             name = t.name
-            x = re.match("^(boys|girls)", name)
-            if x:
-                print(name)
-                if name.startswith("boys "):
-                    name_new = name[len("boys "):]
-                    item_mapped = name_new.split()[0]
-                elif name.startswith("girls "):
-                    name_new = name[len("girls "):]
-                    item_mapped = name_new.split()[0]
-                elif name.endswith("boy)"):
-                    name_new = name
-                    item_mapped = name.split()[0]
-                elif name.endswith("girls)"):
-                    name_new = name
-                    item_mapped = name.split()[0]
-
-                #print(item_mapped)
-                if (len(name_new.split()) > 1) and name_new.split()[1] == "socks":
-                    item_mapped = "socks"
-                if ("snowsuit" in item_mapped):  #this branch is to cope with one typo, no subtle way to put this.
-                    item_mapped = "snowsuit"
-                
-                print(item_mapped)
-
-                if ("teen" in name_new) or ("14-16" in name_new) or ("18-20" in name_new):
-                    size_mapped = "teen"
-                elif ("kid" in name_new) or ("6-7" in name_new) or ("8-10" in name_new) or ("10-12" in name_new) or ("12-14" in name_new):
-                    size_mapped = "kid"
-                elif ("infant" in name_new) or (" mo" in name_new):
-                    size_mapped = "baby"
-                elif ("2T-3T" in name_new) or ("4T-5T" in name_new):
-                    size_mapped = "toddler"
-
-                print(size_mapped+"\n")
-
-                # item_new = Item.object.filter(name == item_mapped + " " + size_mapped)
-                # item_new.quantity += (t.quantity if t.quantity>0 else 0)
+            if ("boys" in name) or ("girls" in name):
+                item_mapped, size_mapped = map(name)
+                item_new = Item.object.filter(name == item_mapped + " " + size_mapped)
+                item_new.quantity += (t.quantity if t.quantity>0 else 0)
 
 
     def _add_items(self):
         for t in Item.objects.all():
             name = t.name
-            x = re.match("^(boys|girls)", name)
-            if x:
-                if name.startswith("boys "):
-                    name_new = name[len("boys "):]
-                    item_mapped = name_new.split()[0]
-                elif name.startswith("girls "):
-                    name_new = name[len("girls "):]
-                    item_mapped = name_new.split()[0]
-                elif name.endswith("boy)"):
-                    name_new = name
-                    item_mapped = name.split()[0]
-                elif name.endswith("girls)"):
-                    name_new = name
-                    item_mapped = name.split()[0]
-
-                #print(item_mapped)
-                item_mapped = item_mapped.lower()
-                if (len(name_new.split()) > 1) and name_new.split()[1] == "socks":
-                    item_mapped = "socks"
-                if ("snowsuit" in item_mapped):  #this branch is to cope with one typo, no subtle way to put this.
-                    item_mapped = "snowsuit"
-                #TODO: add same item merges, e.g. coat, jacket -> coat/jacket
-                if ("coat" in item_mapped) or ("jacket" in item_mapped):
-                    item_mapped = "coat/jacket"
-                if "pj" in item_mapped:
-                    item_mapped = "pj"
-
+            if ("boys" in name) or ("girls" in name):
+                item_mapped, size_mapped = map(name)
                 if not(item_mapped in Command.NEW_ITEM_NAMES):
                     Command.NEW_ITEM_NAMES.append(item_mapped)
-
-        for item in Command.NEW_ITEM_NAMES:
-            print(item)
+        # for item in Command.NEW_ITEM_NAMES:
+        #     print(item)
         for item in Command.NEW_ITEM_NAMES:
             for size in Command.NEW_SIZES:
-                print("creating item: "+ item+" "+size +" \n")
+                # print("creating item: "+ item+" "+size +" \n")
                 Item.objects.create(name=item+" "+size, quantity=0)
                 print("created item: "+ item+" "+size +" \n")
             
