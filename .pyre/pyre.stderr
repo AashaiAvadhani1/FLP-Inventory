@@ -1,0 +1,1100 @@
+2022-03-23 21:25:33,475 [PID 12106] INFO No binary specified, looking for `pyre.bin` in PATH
+2022-03-23 21:25:33,476 [PID 12106] INFO Could not determine the number of Pyre workers from configuration. Auto-set the value to 4.
+2022-03-23 21:25:33,476 [PID 12106] WARNING '/Users/aashaiavadhani/Library/Python/3.9/lib/python/site-packages' does not match any paths.
+2022-03-23 21:25:33,476 [PID 12106] INFO No typeshed specified, looking for it...
+2022-03-23 21:25:33,477 [PID 12106] INFO Found: `/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed`
+2022-03-23 21:25:33,479 [PID 12106] INFO Writing arguments into /var/folders/4_/4j5767wd24q0v592v721vgsr0000gn/T/pyre_arguments_byqz1x35.json...
+2022-03-23 21:25:33,480 [PID 12106] DEBUG Arguments:
+{
+  "source_paths": {
+    "kind": "simple",
+    "paths": [
+      "/Users/aashaiavadhani/Desktop/FLP-Inventory"
+    ]
+  },
+  "search_paths": [
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/python3.9/site-packages",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stdlib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/DateTimeRange",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Deprecated",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Flask",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/JACK-Client",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Jinja2",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Markdown",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/MarkupSafe",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Pillow",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/PyMySQL",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/PyYAML",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Pygments",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Send2Trash",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Werkzeug",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/aiofiles",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/annoy",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/appdirs",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/atomicwrites",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/aws-xray-sdk",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/babel",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/backports.ssl_match_hostname",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/backports_abc",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/beautifulsoup4",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/bleach",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/boto",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/braintree",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/cachetools",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/caldav",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/certifi",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/characteristic",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/chardet",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/click",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/click-spinner",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/colorama",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/commonmark",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/contextvars",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/croniter",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/cryptography",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/dataclasses",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/dateparser",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/decorator",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/docopt",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/docutils",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/editdistance",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/emoji",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/entrypoints",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/filelock",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/first",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/freezegun",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/frozendict",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/html5lib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/httplib2",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/humanfriendly",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/itsdangerous",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/jmespath",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/jsonschema",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/mock",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/mypy-extensions",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/mysqlclient",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/oauthlib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/orjson",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/paramiko",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/polib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/prettytable",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/protobuf",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/psutil",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/psycopg2",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyOpenSSL",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyRFC3339",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyaudio",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pycurl",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyfarmhash",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pysftp",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pytest-lazy-fixture",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-dateutil",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-gflags",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-nmap",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-slugify",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pytz",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyvmomi",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/redis",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/requests",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/retry",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/selenium",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/setuptools",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/simplejson",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/singledispatch",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/six",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/slumber",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/stripe",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/tabulate",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/termcolor",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/toml",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/toposort",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/ttkthemes",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/typed-ast",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/tzlocal",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/ujson",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/vobject",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/waitress",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/xxhash"
+  ],
+  "excludes": [],
+  "checked_directory_allowlist": [
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory"
+  ],
+  "checked_directory_blocklist": [],
+  "extensions": [],
+  "log_path": "/Users/aashaiavadhani/Desktop/FLP-Inventory/.pyre",
+  "global_root": "/Users/aashaiavadhani/Desktop/FLP-Inventory",
+  "debug": false,
+  "python_version": {
+    "major": 3,
+    "minor": 9,
+    "micro": 10
+  },
+  "shared_memory": {},
+  "parallel": true,
+  "number_of_workers": 4,
+  "inline_decorators": false,
+  "no_verify": false,
+  "strict": false,
+  "taint_model_paths": [
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib"
+  ],
+  "use_cache": false
+}
+2022-03-23 21:25:33,734 [PID 12106] INFO  Initializing shared memory [heap_size=8589934592, dep_table_pow=27, hash_table_pow=26]
+2022-03-23 21:25:33,740 [PID 12106] INFO  Verifying model syntax and configuration.
+2022-03-23 21:25:34,167 [PID 12106] INFO  Finding taint models in `/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib`.
+2022-03-23 21:25:34,423 [PID 12106] PERFORMANCE  Verified model syntax and configuration: 0.68s
+2022-03-23 21:25:34,424 [PID 12106] INFO  Building module tracker...
+2022-03-23 21:25:34,734 [PID 12106] PERFORMANCE  Module tracker built: 0.31s
+2022-03-23 21:25:34,734 [PID 12106] INFO  Building type environment...
+2022-03-23 21:25:34,921 [PID 12106] INFO  Parsing 6630 stubs and sources...
+2022-03-23 21:25:42,841 [PID 12106] PERFORMANCE  Sources parsed: 7.93s
+2022-03-23 21:25:48,945 [PID 12106] PERFORMANCE  Full environment built: 14.22s
+2022-03-23 21:25:49,204 [PID 12106] INFO  Checking 106041 functions...
+2022-03-23 21:25:50,165 [PID 12106] INFO  Processed 992 of 106041 functions
+2022-03-23 21:25:50,371 [PID 12106] INFO  Processed 1984 of 106041 functions
+2022-03-23 21:25:50,407 [PID 12106] INFO  Processed 2976 of 106041 functions
+2022-03-23 21:25:50,445 [PID 12106] INFO  Processed 3968 of 106041 functions
+2022-03-23 21:25:50,909 [PID 12106] INFO  Processed 4960 of 106041 functions
+2022-03-23 21:25:51,104 [PID 12106] INFO  Processed 5952 of 106041 functions
+2022-03-23 21:25:51,254 [PID 12106] INFO  Processed 6944 of 106041 functions
+2022-03-23 21:25:51,329 [PID 12106] INFO  Processed 7936 of 106041 functions
+2022-03-23 21:25:51,849 [PID 12106] INFO  Processed 8928 of 106041 functions
+2022-03-23 21:25:52,043 [PID 12106] INFO  Processed 9920 of 106041 functions
+2022-03-23 21:25:52,111 [PID 12106] INFO  Processed 10912 of 106041 functions
+2022-03-23 21:25:52,582 [PID 12106] INFO  Processed 11904 of 106041 functions
+2022-03-23 21:25:53,019 [PID 12106] INFO  Processed 12896 of 106041 functions
+2022-03-23 21:25:53,289 [PID 12106] INFO  Processed 13888 of 106041 functions
+2022-03-23 21:25:53,534 [PID 12106] INFO  Processed 14880 of 106041 functions
+2022-03-23 21:25:53,727 [PID 12106] INFO  Processed 15872 of 106041 functions
+2022-03-23 21:25:54,096 [PID 12106] INFO  Processed 16864 of 106041 functions
+2022-03-23 21:25:54,451 [PID 12106] INFO  Processed 17856 of 106041 functions
+2022-03-23 21:25:54,562 [PID 12106] INFO  Processed 18848 of 106041 functions
+2022-03-23 21:25:55,085 [PID 12106] INFO  Processed 19840 of 106041 functions
+2022-03-23 21:25:55,092 [PID 12106] INFO  Processed 20832 of 106041 functions
+2022-03-23 21:25:56,295 [PID 12106] INFO  Processed 21824 of 106041 functions
+2022-03-23 21:25:56,331 [PID 12106] INFO  Processed 22816 of 106041 functions
+2022-03-23 21:25:57,908 [PID 12106] INFO  Processed 23808 of 106041 functions
+2022-03-23 21:25:58,012 [PID 12106] INFO  Processed 24800 of 106041 functions
+2022-03-23 21:25:58,366 [PID 12106] INFO  Processed 25792 of 106041 functions
+2022-03-23 21:25:59,422 [PID 12106] INFO  Processed 26784 of 106041 functions
+2022-03-23 21:25:59,488 [PID 12106] INFO  Processed 27776 of 106041 functions
+2022-03-23 21:25:59,526 [PID 12106] INFO  Processed 28768 of 106041 functions
+2022-03-23 21:25:59,664 [PID 12106] INFO  Processed 29760 of 106041 functions
+2022-03-23 21:26:00,409 [PID 12106] INFO  Processed 30752 of 106041 functions
+2022-03-23 21:26:00,424 [PID 12106] INFO  Processed 31744 of 106041 functions
+2022-03-23 21:26:00,829 [PID 12106] INFO  Processed 32736 of 106041 functions
+2022-03-23 21:26:01,255 [PID 12106] INFO  Processed 33728 of 106041 functions
+2022-03-23 21:26:01,453 [PID 12106] INFO  Processed 34720 of 106041 functions
+2022-03-23 21:26:01,753 [PID 12106] INFO  Processed 35712 of 106041 functions
+2022-03-23 21:26:02,038 [PID 12106] INFO  Processed 36704 of 106041 functions
+2022-03-23 21:26:02,750 [PID 12106] INFO  Processed 37696 of 106041 functions
+2022-03-23 21:26:02,789 [PID 12106] INFO  Processed 38688 of 106041 functions
+2022-03-23 21:26:03,276 [PID 12106] INFO  Processed 39680 of 106041 functions
+2022-03-23 21:26:03,525 [PID 12106] INFO  Processed 40672 of 106041 functions
+2022-03-23 21:26:03,784 [PID 12106] INFO  Processed 41664 of 106041 functions
+2022-03-23 21:26:04,016 [PID 12106] INFO  Processed 42656 of 106041 functions
+2022-03-23 21:26:04,213 [PID 12106] INFO  Processed 43648 of 106041 functions
+2022-03-23 21:26:04,416 [PID 12106] INFO  Processed 44640 of 106041 functions
+2022-03-23 21:26:04,813 [PID 12106] INFO  Processed 45632 of 106041 functions
+2022-03-23 21:26:04,842 [PID 12106] INFO  Processed 46624 of 106041 functions
+2022-03-23 21:26:05,033 [PID 12106] INFO  Processed 47616 of 106041 functions
+2022-03-23 21:26:05,609 [PID 12106] INFO  Processed 48608 of 106041 functions
+2022-03-23 21:26:05,662 [PID 12106] INFO  Processed 49600 of 106041 functions
+2022-03-23 21:26:05,776 [PID 12106] INFO  Processed 50592 of 106041 functions
+2022-03-23 21:26:06,131 [PID 12106] INFO  Processed 51584 of 106041 functions
+2022-03-23 21:26:06,154 [PID 12106] INFO  Processed 52576 of 106041 functions
+2022-03-23 21:26:06,370 [PID 12106] INFO  Processed 53568 of 106041 functions
+2022-03-23 21:26:06,747 [PID 12106] INFO  Processed 54560 of 106041 functions
+2022-03-23 21:26:06,771 [PID 12106] INFO  Processed 55552 of 106041 functions
+2022-03-23 21:26:07,090 [PID 12106] INFO  Processed 56544 of 106041 functions
+2022-03-23 21:26:07,531 [PID 12106] INFO  Processed 57536 of 106041 functions
+2022-03-23 21:26:08,288 [PID 12106] INFO  Processed 58528 of 106041 functions
+2022-03-23 21:26:08,734 [PID 12106] INFO  Processed 59520 of 106041 functions
+2022-03-23 21:26:08,778 [PID 12106] INFO  Processed 60512 of 106041 functions
+2022-03-23 21:26:09,754 [PID 12106] INFO  Processed 61504 of 106041 functions
+2022-03-23 21:26:09,908 [PID 12106] INFO  Processed 62496 of 106041 functions
+2022-03-23 21:26:10,175 [PID 12106] INFO  Processed 63488 of 106041 functions
+2022-03-23 21:26:10,453 [PID 12106] INFO  Processed 64480 of 106041 functions
+2022-03-23 21:26:10,538 [PID 12106] INFO  Processed 65472 of 106041 functions
+2022-03-23 21:26:10,884 [PID 12106] INFO  Processed 66464 of 106041 functions
+2022-03-23 21:26:11,080 [PID 12106] INFO  Processed 67456 of 106041 functions
+2022-03-23 21:26:11,431 [PID 12106] INFO  Processed 68448 of 106041 functions
+2022-03-23 21:26:12,174 [PID 12106] INFO  Processed 69440 of 106041 functions
+2022-03-23 21:26:12,889 [PID 12106] INFO  Processed 70432 of 106041 functions
+2022-03-23 21:26:13,407 [PID 12106] INFO  Processed 71424 of 106041 functions
+2022-03-23 21:26:13,778 [PID 12106] INFO  Processed 72416 of 106041 functions
+2022-03-23 21:26:14,110 [PID 12106] INFO  Processed 73408 of 106041 functions
+2022-03-23 21:26:14,869 [PID 12106] INFO  Processed 74400 of 106041 functions
+2022-03-23 21:26:15,676 [PID 12106] INFO  Processed 75392 of 106041 functions
+2022-03-23 21:26:16,249 [PID 12106] INFO  Processed 76384 of 106041 functions
+2022-03-23 21:26:16,523 [PID 12106] INFO  Processed 77376 of 106041 functions
+2022-03-23 21:26:16,972 [PID 12106] INFO  Processed 78368 of 106041 functions
+2022-03-23 21:26:17,141 [PID 12106] INFO  Processed 79360 of 106041 functions
+2022-03-23 21:26:17,749 [PID 12106] INFO  Processed 80352 of 106041 functions
+2022-03-23 21:26:17,917 [PID 12106] INFO  Processed 81344 of 106041 functions
+2022-03-23 21:26:18,542 [PID 12106] INFO  Processed 82336 of 106041 functions
+2022-03-23 21:26:18,961 [PID 12106] INFO  Processed 83328 of 106041 functions
+2022-03-23 21:26:19,659 [PID 12106] INFO  Processed 84320 of 106041 functions
+2022-03-23 21:26:20,000 [PID 12106] INFO  Processed 85312 of 106041 functions
+2022-03-23 21:26:20,045 [PID 12106] INFO  Processed 86304 of 106041 functions
+2022-03-23 21:26:20,709 [PID 12106] INFO  Processed 87296 of 106041 functions
+2022-03-23 21:26:20,838 [PID 12106] INFO  Processed 88288 of 106041 functions
+2022-03-23 21:26:20,885 [PID 12106] INFO  Processed 89280 of 106041 functions
+2022-03-23 21:26:21,735 [PID 12106] INFO  Processed 90272 of 106041 functions
+2022-03-23 21:26:21,896 [PID 12106] INFO  Processed 91264 of 106041 functions
+2022-03-23 21:26:21,928 [PID 12106] INFO  Processed 92256 of 106041 functions
+2022-03-23 21:26:22,427 [PID 12106] INFO  Processed 93248 of 106041 functions
+2022-03-23 21:26:22,514 [PID 12106] INFO  Processed 94240 of 106041 functions
+2022-03-23 21:26:22,582 [PID 12106] INFO  Processed 95232 of 106041 functions
+2022-03-23 21:26:23,092 [PID 12106] INFO  Processed 96224 of 106041 functions
+2022-03-23 21:26:23,098 [PID 12106] INFO  Processed 97216 of 106041 functions
+2022-03-23 21:26:23,302 [PID 12106] INFO  Processed 98208 of 106041 functions
+2022-03-23 21:26:23,680 [PID 12106] INFO  Processed 99200 of 106041 functions
+2022-03-23 21:26:23,754 [PID 12106] INFO  Processed 100192 of 106041 functions
+2022-03-23 21:26:23,848 [PID 12106] INFO  Processed 101184 of 106041 functions
+2022-03-23 21:26:24,150 [PID 12106] INFO  Processed 102176 of 106041 functions
+2022-03-23 21:26:24,336 [PID 12106] INFO  Processed 103168 of 106041 functions
+2022-03-23 21:26:24,507 [PID 12106] INFO  Processed 104160 of 106041 functions
+2022-03-23 21:26:24,566 [PID 12106] INFO  Processed 105049 of 106041 functions
+2022-03-23 21:26:25,135 [PID 12106] INFO  Processed 106041 of 106041 functions
+2022-03-23 21:26:25,135 [PID 12106] PERFORMANCE  Check_TypeCheck: 35.95s
+2022-03-23 21:26:25,135 [PID 12106] MEMORY  Shared memory size post-typecheck (size: 388)
+2022-03-23 21:26:25,135 [PID 12106] INFO  Postprocessing 6630 sources...
+2022-03-23 21:26:25,220 [PID 12106] INFO  Postprocessed 246 of 6630 sources
+2022-03-23 21:26:25,226 [PID 12106] INFO  Postprocessed 492 of 6630 sources
+2022-03-23 21:26:25,248 [PID 12106] INFO  Postprocessed 738 of 6630 sources
+2022-03-23 21:26:25,253 [PID 12106] INFO  Postprocessed 984 of 6630 sources
+2022-03-23 21:26:25,311 [PID 12106] INFO  Postprocessed 1230 of 6630 sources
+2022-03-23 21:26:25,316 [PID 12106] INFO  Postprocessed 1476 of 6630 sources
+2022-03-23 21:26:25,324 [PID 12106] INFO  Postprocessed 1722 of 6630 sources
+2022-03-23 21:26:25,388 [PID 12106] INFO  Postprocessed 1968 of 6630 sources
+2022-03-23 21:26:25,453 [PID 12106] INFO  Postprocessed 2214 of 6630 sources
+2022-03-23 21:26:25,469 [PID 12106] INFO  Postprocessed 2460 of 6630 sources
+2022-03-23 21:26:25,509 [PID 12106] INFO  Postprocessed 2706 of 6630 sources
+2022-03-23 21:26:25,565 [PID 12106] INFO  Postprocessed 2952 of 6630 sources
+2022-03-23 21:26:25,621 [PID 12106] INFO  Postprocessed 3198 of 6630 sources
+2022-03-23 21:26:25,673 [PID 12106] INFO  Postprocessed 3444 of 6630 sources
+2022-03-23 21:26:25,728 [PID 12106] INFO  Postprocessed 3690 of 6630 sources
+2022-03-23 21:26:25,736 [PID 12106] INFO  Postprocessed 3936 of 6630 sources
+2022-03-23 21:26:25,744 [PID 12106] INFO  Postprocessed 4182 of 6630 sources
+2022-03-23 21:26:25,768 [PID 12106] INFO  Postprocessed 4428 of 6630 sources
+2022-03-23 21:26:25,843 [PID 12106] INFO  Postprocessed 4674 of 6630 sources
+2022-03-23 21:26:25,933 [PID 12106] INFO  Postprocessed 4920 of 6630 sources
+2022-03-23 21:26:25,951 [PID 12106] INFO  Postprocessed 5166 of 6630 sources
+2022-03-23 21:26:25,982 [PID 12106] INFO  Postprocessed 5412 of 6630 sources
+2022-03-23 21:26:26,066 [PID 12106] INFO  Postprocessed 5658 of 6630 sources
+2022-03-23 21:26:26,079 [PID 12106] INFO  Postprocessed 5904 of 6630 sources
+2022-03-23 21:26:26,086 [PID 12106] INFO  Postprocessed 6150 of 6630 sources
+2022-03-23 21:26:26,201 [PID 12106] INFO  Postprocessed 6384 of 6630 sources
+2022-03-23 21:26:26,350 [PID 12106] INFO  Postprocessed 6630 of 6630 sources
+2022-03-23 21:26:26,350 [PID 12106] INFO  Fetching initial callables to analyze...
+2022-03-23 21:26:31,048 [PID 12106] PERFORMANCE  Fetched initial callables to analyze: 4.70s
+2022-03-23 21:26:31,056 [PID 12106] INFO  Parsing taint models...
+2022-03-23 21:26:31,062 [PID 12106] INFO  Computing inferred models...
+2022-03-23 21:26:34,709 [PID 12106] PERFORMANCE  Computed inferred models: 3.65s
+2022-03-23 21:26:35,195 [PID 12106] INFO  Finding taint models in `/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib`.
+2022-03-23 21:26:36,372 [PID 12106] ERROR Found 268 model verification errors!
+2022-03-23 21:28:13,018 [PID 12437] INFO No binary specified, looking for `pyre.bin` in PATH
+2022-03-23 21:28:13,019 [PID 12437] INFO Could not determine the number of Pyre workers from configuration. Auto-set the value to 4.
+2022-03-23 21:28:13,019 [PID 12437] WARNING '/Users/aashaiavadhani/Library/Python/3.9/lib/python/site-packages' does not match any paths.
+2022-03-23 21:28:13,019 [PID 12437] INFO No typeshed specified, looking for it...
+2022-03-23 21:28:13,019 [PID 12437] INFO Found: `/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed`
+2022-03-23 21:28:13,022 [PID 12437] INFO Writing arguments into /var/folders/4_/4j5767wd24q0v592v721vgsr0000gn/T/pyre_arguments__1jobbam.json...
+2022-03-23 21:28:13,022 [PID 12437] DEBUG Arguments:
+{
+  "source_paths": {
+    "kind": "simple",
+    "paths": [
+      "/Users/aashaiavadhani/Desktop/FLP-Inventory"
+    ]
+  },
+  "search_paths": [
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/python3.9/site-packages",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stdlib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/DateTimeRange",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Deprecated",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Flask",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/JACK-Client",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Jinja2",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Markdown",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/MarkupSafe",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Pillow",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/PyMySQL",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/PyYAML",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Pygments",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Send2Trash",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Werkzeug",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/aiofiles",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/annoy",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/appdirs",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/atomicwrites",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/aws-xray-sdk",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/babel",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/backports.ssl_match_hostname",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/backports_abc",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/beautifulsoup4",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/bleach",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/boto",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/braintree",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/cachetools",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/caldav",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/certifi",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/characteristic",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/chardet",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/click",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/click-spinner",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/colorama",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/commonmark",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/contextvars",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/croniter",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/cryptography",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/dataclasses",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/dateparser",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/decorator",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/docopt",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/docutils",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/editdistance",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/emoji",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/entrypoints",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/filelock",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/first",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/freezegun",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/frozendict",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/html5lib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/httplib2",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/humanfriendly",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/itsdangerous",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/jmespath",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/jsonschema",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/mock",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/mypy-extensions",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/mysqlclient",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/oauthlib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/orjson",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/paramiko",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/polib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/prettytable",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/protobuf",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/psutil",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/psycopg2",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyOpenSSL",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyRFC3339",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyaudio",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pycurl",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyfarmhash",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pysftp",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pytest-lazy-fixture",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-dateutil",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-gflags",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-nmap",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-slugify",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pytz",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyvmomi",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/redis",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/requests",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/retry",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/selenium",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/setuptools",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/simplejson",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/singledispatch",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/six",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/slumber",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/stripe",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/tabulate",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/termcolor",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/toml",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/toposort",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/ttkthemes",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/typed-ast",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/tzlocal",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/ujson",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/vobject",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/waitress",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/xxhash"
+  ],
+  "excludes": [],
+  "checked_directory_allowlist": [
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory"
+  ],
+  "checked_directory_blocklist": [],
+  "extensions": [],
+  "log_path": "/Users/aashaiavadhani/Desktop/FLP-Inventory/.pyre",
+  "global_root": "/Users/aashaiavadhani/Desktop/FLP-Inventory",
+  "debug": false,
+  "python_version": {
+    "major": 3,
+    "minor": 9,
+    "micro": 10
+  },
+  "shared_memory": {},
+  "parallel": true,
+  "number_of_workers": 4,
+  "inline_decorators": false,
+  "no_verify": false,
+  "strict": false,
+  "taint_model_paths": [
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory"
+  ],
+  "use_cache": false
+}
+2022-03-23 21:28:13,086 [PID 12437] INFO  Initializing shared memory [heap_size=8589934592, dep_table_pow=27, hash_table_pow=26]
+2022-03-23 21:28:13,092 [PID 12437] INFO  Verifying model syntax and configuration.
+2022-03-23 21:28:13,347 [PID 12437] INFO  Finding taint models in `/Users/aashaiavadhani/Desktop/FLP-Inventory`.
+2022-03-23 21:28:13,578 [PID 12437] PERFORMANCE  Verified model syntax and configuration: 0.49s
+2022-03-23 21:28:13,578 [PID 12437] INFO  Building module tracker...
+2022-03-23 21:28:13,834 [PID 12437] PERFORMANCE  Module tracker built: 0.26s
+2022-03-23 21:28:13,834 [PID 12437] INFO  Building type environment...
+2022-03-23 21:28:14,018 [PID 12437] INFO  Parsing 6630 stubs and sources...
+2022-03-23 21:28:21,887 [PID 12437] PERFORMANCE  Sources parsed: 7.87s
+2022-03-23 21:28:27,842 [PID 12437] PERFORMANCE  Full environment built: 14.01s
+2022-03-23 21:28:28,109 [PID 12437] INFO  Checking 106041 functions...
+2022-03-23 21:28:29,182 [PID 12437] INFO  Processed 992 of 106041 functions
+2022-03-23 21:28:29,372 [PID 12437] INFO  Processed 1984 of 106041 functions
+2022-03-23 21:28:29,419 [PID 12437] INFO  Processed 2976 of 106041 functions
+2022-03-23 21:28:29,445 [PID 12437] INFO  Processed 3968 of 106041 functions
+2022-03-23 21:28:29,828 [PID 12437] INFO  Processed 4960 of 106041 functions
+2022-03-23 21:28:29,984 [PID 12437] INFO  Processed 5952 of 106041 functions
+2022-03-23 21:28:30,129 [PID 12437] INFO  Processed 6944 of 106041 functions
+2022-03-23 21:28:30,219 [PID 12437] INFO  Processed 7936 of 106041 functions
+2022-03-23 21:28:30,895 [PID 12437] INFO  Processed 8928 of 106041 functions
+2022-03-23 21:28:31,134 [PID 12437] INFO  Processed 9920 of 106041 functions
+2022-03-23 21:28:31,221 [PID 12437] INFO  Processed 10912 of 106041 functions
+2022-03-23 21:28:31,630 [PID 12437] INFO  Processed 11904 of 106041 functions
+2022-03-23 21:28:31,975 [PID 12437] INFO  Processed 12896 of 106041 functions
+2022-03-23 21:28:32,235 [PID 12437] INFO  Processed 13888 of 106041 functions
+2022-03-23 21:28:32,463 [PID 12437] INFO  Processed 14880 of 106041 functions
+2022-03-23 21:28:32,688 [PID 12437] INFO  Processed 15872 of 106041 functions
+2022-03-23 21:28:33,144 [PID 12437] INFO  Processed 16864 of 106041 functions
+2022-03-23 21:28:33,569 [PID 12437] INFO  Processed 17856 of 106041 functions
+2022-03-23 21:28:33,690 [PID 12437] INFO  Processed 18848 of 106041 functions
+2022-03-23 21:28:34,240 [PID 12437] INFO  Processed 19840 of 106041 functions
+2022-03-23 21:28:34,251 [PID 12437] INFO  Processed 20832 of 106041 functions
+2022-03-23 21:28:35,658 [PID 12437] INFO  Processed 21824 of 106041 functions
+2022-03-23 21:28:35,684 [PID 12437] INFO  Processed 22816 of 106041 functions
+2022-03-23 21:28:37,455 [PID 12437] INFO  Processed 23808 of 106041 functions
+2022-03-23 21:28:37,574 [PID 12437] INFO  Processed 24800 of 106041 functions
+2022-03-23 21:28:37,802 [PID 12437] INFO  Processed 25792 of 106041 functions
+2022-03-23 21:28:38,887 [PID 12437] INFO  Processed 26784 of 106041 functions
+2022-03-23 21:28:39,076 [PID 12437] INFO  Processed 27776 of 106041 functions
+2022-03-23 21:28:39,112 [PID 12437] INFO  Processed 28768 of 106041 functions
+2022-03-23 21:28:39,156 [PID 12437] INFO  Processed 29760 of 106041 functions
+2022-03-23 21:28:39,921 [PID 12437] INFO  Processed 30752 of 106041 functions
+2022-03-23 21:28:40,041 [PID 12437] INFO  Processed 31744 of 106041 functions
+2022-03-23 21:28:40,487 [PID 12437] INFO  Processed 32736 of 106041 functions
+2022-03-23 21:28:40,949 [PID 12437] INFO  Processed 33728 of 106041 functions
+2022-03-23 21:28:41,145 [PID 12437] INFO  Processed 34720 of 106041 functions
+2022-03-23 21:28:41,368 [PID 12437] INFO  Processed 35712 of 106041 functions
+2022-03-23 21:28:41,676 [PID 12437] INFO  Processed 36704 of 106041 functions
+2022-03-23 21:28:42,347 [PID 12437] INFO  Processed 37696 of 106041 functions
+2022-03-23 21:28:42,416 [PID 12437] INFO  Processed 38688 of 106041 functions
+2022-03-23 21:28:42,871 [PID 12437] INFO  Processed 39680 of 106041 functions
+2022-03-23 21:28:43,192 [PID 12437] INFO  Processed 40672 of 106041 functions
+2022-03-23 21:28:43,421 [PID 12437] INFO  Processed 41664 of 106041 functions
+2022-03-23 21:28:43,621 [PID 12437] INFO  Processed 42656 of 106041 functions
+2022-03-23 21:28:43,948 [PID 12437] INFO  Processed 43648 of 106041 functions
+2022-03-23 21:28:44,108 [PID 12437] INFO  Processed 44640 of 106041 functions
+2022-03-23 21:28:44,511 [PID 12437] INFO  Processed 45632 of 106041 functions
+2022-03-23 21:28:44,605 [PID 12437] INFO  Processed 46624 of 106041 functions
+2022-03-23 21:28:44,825 [PID 12437] INFO  Processed 47616 of 106041 functions
+2022-03-23 21:28:45,471 [PID 12437] INFO  Processed 48608 of 106041 functions
+2022-03-23 21:28:45,501 [PID 12437] INFO  Processed 49600 of 106041 functions
+2022-03-23 21:28:45,675 [PID 12437] INFO  Processed 50592 of 106041 functions
+2022-03-23 21:28:45,986 [PID 12437] INFO  Processed 51584 of 106041 functions
+2022-03-23 21:28:46,021 [PID 12437] INFO  Processed 52576 of 106041 functions
+2022-03-23 21:28:46,313 [PID 12437] INFO  Processed 53568 of 106041 functions
+2022-03-23 21:28:46,597 [PID 12437] INFO  Processed 54560 of 106041 functions
+2022-03-23 21:28:46,632 [PID 12437] INFO  Processed 55552 of 106041 functions
+2022-03-23 21:28:47,028 [PID 12437] INFO  Processed 56544 of 106041 functions
+2022-03-23 21:28:47,383 [PID 12437] INFO  Processed 57536 of 106041 functions
+2022-03-23 21:28:48,173 [PID 12437] INFO  Processed 58528 of 106041 functions
+2022-03-23 21:28:48,591 [PID 12437] INFO  Processed 59520 of 106041 functions
+2022-03-23 21:28:48,665 [PID 12437] INFO  Processed 60512 of 106041 functions
+2022-03-23 21:28:49,603 [PID 12437] INFO  Processed 61504 of 106041 functions
+2022-03-23 21:28:49,705 [PID 12437] INFO  Processed 62496 of 106041 functions
+2022-03-23 21:28:49,958 [PID 12437] INFO  Processed 63488 of 106041 functions
+2022-03-23 21:28:50,302 [PID 12437] INFO  Processed 64480 of 106041 functions
+2022-03-23 21:28:50,333 [PID 12437] INFO  Processed 65472 of 106041 functions
+2022-03-23 21:28:50,659 [PID 12437] INFO  Processed 66464 of 106041 functions
+2022-03-23 21:28:50,979 [PID 12437] INFO  Processed 67456 of 106041 functions
+2022-03-23 21:28:51,335 [PID 12437] INFO  Processed 68448 of 106041 functions
+2022-03-23 21:28:51,968 [PID 12437] INFO  Processed 69440 of 106041 functions
+2022-03-23 21:28:52,700 [PID 12437] INFO  Processed 70432 of 106041 functions
+2022-03-23 21:28:53,222 [PID 12437] INFO  Processed 71424 of 106041 functions
+2022-03-23 21:28:53,561 [PID 12437] INFO  Processed 72416 of 106041 functions
+2022-03-23 21:28:53,925 [PID 12437] INFO  Processed 73408 of 106041 functions
+2022-03-23 21:28:54,698 [PID 12437] INFO  Processed 74400 of 106041 functions
+2022-03-23 21:28:55,511 [PID 12437] ERROR 
+2022-03-24 12:45:48,293 [PID 6345] INFO No binary specified, looking for `pyre.bin` in PATH
+2022-03-24 12:45:48,295 [PID 6345] INFO Could not determine the number of Pyre workers from configuration. Auto-set the value to 4.
+2022-03-24 12:45:48,295 [PID 6345] WARNING '/Users/aashaiavadhani/Library/Python/3.9/lib/python/site-packages' does not match any paths.
+2022-03-24 12:45:48,296 [PID 6345] INFO No typeshed specified, looking for it...
+2022-03-24 12:45:48,296 [PID 6345] INFO Found: `/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed`
+2022-03-24 12:45:48,309 [PID 6345] INFO Writing arguments into /var/folders/4_/4j5767wd24q0v592v721vgsr0000gn/T/pyre_arguments_mlxyk3ms.json...
+2022-03-24 12:45:48,310 [PID 6345] DEBUG Arguments:
+{
+  "source_paths": {
+    "kind": "simple",
+    "paths": [
+      "/Users/aashaiavadhani/Desktop/FLP-Inventory"
+    ]
+  },
+  "search_paths": [
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/python3.9/site-packages",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stdlib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/DateTimeRange",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Deprecated",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Flask",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/JACK-Client",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Jinja2",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Markdown",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/MarkupSafe",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Pillow",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/PyMySQL",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/PyYAML",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Pygments",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Send2Trash",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Werkzeug",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/aiofiles",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/annoy",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/appdirs",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/atomicwrites",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/aws-xray-sdk",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/babel",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/backports.ssl_match_hostname",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/backports_abc",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/beautifulsoup4",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/bleach",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/boto",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/braintree",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/cachetools",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/caldav",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/certifi",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/characteristic",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/chardet",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/click",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/click-spinner",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/colorama",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/commonmark",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/contextvars",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/croniter",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/cryptography",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/dataclasses",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/dateparser",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/decorator",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/docopt",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/docutils",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/editdistance",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/emoji",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/entrypoints",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/filelock",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/first",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/freezegun",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/frozendict",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/html5lib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/httplib2",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/humanfriendly",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/itsdangerous",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/jmespath",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/jsonschema",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/mock",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/mypy-extensions",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/mysqlclient",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/oauthlib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/orjson",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/paramiko",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/polib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/prettytable",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/protobuf",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/psutil",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/psycopg2",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyOpenSSL",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyRFC3339",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyaudio",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pycurl",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyfarmhash",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pysftp",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pytest-lazy-fixture",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-dateutil",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-gflags",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-nmap",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-slugify",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pytz",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyvmomi",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/redis",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/requests",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/retry",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/selenium",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/setuptools",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/simplejson",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/singledispatch",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/six",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/slumber",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/stripe",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/tabulate",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/termcolor",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/toml",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/toposort",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/ttkthemes",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/typed-ast",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/tzlocal",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/ujson",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/vobject",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/waitress",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/xxhash"
+  ],
+  "excludes": [],
+  "checked_directory_allowlist": [
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory"
+  ],
+  "checked_directory_blocklist": [],
+  "extensions": [],
+  "log_path": "/Users/aashaiavadhani/Desktop/FLP-Inventory/.pyre",
+  "global_root": "/Users/aashaiavadhani/Desktop/FLP-Inventory",
+  "debug": false,
+  "python_version": {
+    "major": 3,
+    "minor": 9,
+    "micro": 10
+  },
+  "shared_memory": {},
+  "parallel": true,
+  "number_of_workers": 4,
+  "additional_logging_sections": [],
+  "show_error_traces": false,
+  "strict": false
+}
+2022-03-24 12:45:48,494 [PID 6345] INFO  Initializing shared memory [heap_size=8589934592, dep_table_pow=27, hash_table_pow=26]
+2022-03-24 12:45:48,499 [PID 6345] INFO  Building module tracker...
+2022-03-24 12:45:49,726 [PID 6345] PERFORMANCE  Module tracker built: 1.23s
+2022-03-24 12:45:49,726 [PID 6345] INFO  Building type environment...
+2022-03-24 12:45:49,914 [PID 6345] INFO  Parsing 6630 stubs and sources...
+2022-03-24 12:45:59,138 [PID 6345] PERFORMANCE  Sources parsed: 9.22s
+2022-03-24 12:46:05,755 [PID 6345] PERFORMANCE  Full environment built: 16.03s
+2022-03-24 12:46:06,026 [PID 6345] INFO  Checking 106043 functions...
+2022-03-24 12:46:07,086 [PID 6345] INFO  Processed 992 of 106043 functions
+2022-03-24 12:46:07,293 [PID 6345] INFO  Processed 1984 of 106043 functions
+2022-03-24 12:46:07,326 [PID 6345] INFO  Processed 2976 of 106043 functions
+2022-03-24 12:46:07,358 [PID 6345] INFO  Processed 3968 of 106043 functions
+2022-03-24 12:46:07,865 [PID 6345] INFO  Processed 4960 of 106043 functions
+2022-03-24 12:46:08,074 [PID 6345] INFO  Processed 5952 of 106043 functions
+2022-03-24 12:46:08,262 [PID 6345] INFO  Processed 6944 of 106043 functions
+2022-03-24 12:46:08,373 [PID 6345] INFO  Processed 7936 of 106043 functions
+2022-03-24 12:46:08,944 [PID 6345] INFO  Processed 8928 of 106043 functions
+2022-03-24 12:46:09,143 [PID 6345] INFO  Processed 9920 of 106043 functions
+2022-03-24 12:46:09,249 [PID 6345] INFO  Processed 10912 of 106043 functions
+2022-03-24 12:46:09,708 [PID 6345] INFO  Processed 11904 of 106043 functions
+2022-03-24 12:46:10,103 [PID 6345] INFO  Processed 12896 of 106043 functions
+2022-03-24 12:46:10,391 [PID 6345] INFO  Processed 13888 of 106043 functions
+2022-03-24 12:46:10,759 [PID 6345] INFO  Processed 14880 of 106043 functions
+2022-03-24 12:46:11,105 [PID 6345] INFO  Processed 15872 of 106043 functions
+2022-03-24 12:46:11,534 [PID 6345] INFO  Processed 16864 of 106043 functions
+2022-03-24 12:46:11,904 [PID 6345] INFO  Processed 17856 of 106043 functions
+2022-03-24 12:46:12,047 [PID 6345] INFO  Processed 18848 of 106043 functions
+2022-03-24 12:46:12,576 [PID 6345] INFO  Processed 19840 of 106043 functions
+2022-03-24 12:46:12,594 [PID 6345] INFO  Processed 20832 of 106043 functions
+2022-03-24 12:46:13,924 [PID 6345] INFO  Processed 21824 of 106043 functions
+2022-03-24 12:46:13,979 [PID 6345] INFO  Processed 22816 of 106043 functions
+2022-03-24 12:46:15,695 [PID 6345] INFO  Processed 23808 of 106043 functions
+2022-03-24 12:46:15,845 [PID 6345] INFO  Processed 24800 of 106043 functions
+2022-03-24 12:46:16,194 [PID 6345] INFO  Processed 25792 of 106043 functions
+2022-03-24 12:46:17,368 [PID 6345] INFO  Processed 26784 of 106043 functions
+2022-03-24 12:46:17,486 [PID 6345] INFO  Processed 27776 of 106043 functions
+2022-03-24 12:46:17,515 [PID 6345] INFO  Processed 28768 of 106043 functions
+2022-03-24 12:46:17,615 [PID 6345] INFO  Processed 29760 of 106043 functions
+2022-03-24 12:46:18,452 [PID 6345] INFO  Processed 30752 of 106043 functions
+2022-03-24 12:46:18,504 [PID 6345] INFO  Processed 31744 of 106043 functions
+2022-03-24 12:46:18,956 [PID 6345] INFO  Processed 32736 of 106043 functions
+2022-03-24 12:46:19,407 [PID 6345] INFO  Processed 33728 of 106043 functions
+2022-03-24 12:46:19,646 [PID 6345] INFO  Processed 34720 of 106043 functions
+2022-03-24 12:46:19,957 [PID 6345] INFO  Processed 35712 of 106043 functions
+2022-03-24 12:46:20,173 [PID 6345] INFO  Processed 36704 of 106043 functions
+2022-03-24 12:46:20,916 [PID 6345] INFO  Processed 37696 of 106043 functions
+2022-03-24 12:46:20,945 [PID 6345] INFO  Processed 38688 of 106043 functions
+2022-03-24 12:46:21,509 [PID 6345] INFO  Processed 39680 of 106043 functions
+2022-03-24 12:46:21,753 [PID 6345] INFO  Processed 40672 of 106043 functions
+2022-03-24 12:46:22,024 [PID 6345] INFO  Processed 41664 of 106043 functions
+2022-03-24 12:46:22,312 [PID 6345] INFO  Processed 42656 of 106043 functions
+2022-03-24 12:46:22,501 [PID 6345] INFO  Processed 43648 of 106043 functions
+2022-03-24 12:46:22,724 [PID 6345] INFO  Processed 44640 of 106043 functions
+2022-03-24 12:46:23,153 [PID 6345] INFO  Processed 45632 of 106043 functions
+2022-03-24 12:46:23,217 [PID 6345] INFO  Processed 46624 of 106043 functions
+2022-03-24 12:46:23,398 [PID 6345] INFO  Processed 47616 of 106043 functions
+2022-03-24 12:46:24,092 [PID 6345] INFO  Processed 48608 of 106043 functions
+2022-03-24 12:46:24,134 [PID 6345] INFO  Processed 49600 of 106043 functions
+2022-03-24 12:46:24,318 [PID 6345] INFO  Processed 50592 of 106043 functions
+2022-03-24 12:46:24,731 [PID 6345] INFO  Processed 51584 of 106043 functions
+2022-03-24 12:46:24,755 [PID 6345] INFO  Processed 52576 of 106043 functions
+2022-03-24 12:46:25,066 [PID 6345] INFO  Processed 53568 of 106043 functions
+2022-03-24 12:46:25,453 [PID 6345] INFO  Processed 54560 of 106043 functions
+2022-03-24 12:46:25,478 [PID 6345] INFO  Processed 55552 of 106043 functions
+2022-03-24 12:46:25,836 [PID 6345] INFO  Processed 56544 of 106043 functions
+2022-03-24 12:46:26,272 [PID 6345] INFO  Processed 57536 of 106043 functions
+2022-03-24 12:46:27,112 [PID 6345] INFO  Processed 58528 of 106043 functions
+2022-03-24 12:46:27,585 [PID 6345] INFO  Processed 59520 of 106043 functions
+2022-03-24 12:46:27,623 [PID 6345] INFO  Processed 60512 of 106043 functions
+2022-03-24 12:46:28,798 [PID 6345] INFO  Processed 61504 of 106043 functions
+2022-03-24 12:46:28,978 [PID 6345] INFO  Processed 62496 of 106043 functions
+2022-03-24 12:46:29,332 [PID 6345] INFO  Processed 63488 of 106043 functions
+2022-03-24 12:46:29,612 [PID 6345] INFO  Processed 64480 of 106043 functions
+2022-03-24 12:46:29,716 [PID 6345] INFO  Processed 65472 of 106043 functions
+2022-03-24 12:46:30,118 [PID 6345] INFO  Processed 66464 of 106043 functions
+2022-03-24 12:46:30,294 [PID 6345] INFO  Processed 67456 of 106043 functions
+2022-03-24 12:46:30,697 [PID 6345] INFO  Processed 68448 of 106043 functions
+2022-03-24 12:46:31,496 [PID 6345] INFO  Processed 69440 of 106043 functions
+2022-03-24 12:46:32,337 [PID 6345] INFO  Processed 70432 of 106043 functions
+2022-03-24 12:46:32,797 [PID 6345] INFO  Processed 71424 of 106043 functions
+2022-03-24 12:46:33,318 [PID 6345] INFO  Processed 72416 of 106043 functions
+2022-03-24 12:46:33,602 [PID 6345] INFO  Processed 73408 of 106043 functions
+2022-03-24 12:46:34,478 [PID 6345] INFO  Processed 74400 of 106043 functions
+2022-03-24 12:46:35,380 [PID 6345] INFO  Processed 75392 of 106043 functions
+2022-03-24 12:46:36,027 [PID 6345] INFO  Processed 76384 of 106043 functions
+2022-03-24 12:46:36,448 [PID 6345] INFO  Processed 77376 of 106043 functions
+2022-03-24 12:46:36,873 [PID 6345] INFO  Processed 78368 of 106043 functions
+2022-03-24 12:46:37,134 [PID 6345] INFO  Processed 79360 of 106043 functions
+2022-03-24 12:46:37,702 [PID 6345] INFO  Processed 80352 of 106043 functions
+2022-03-24 12:46:37,975 [PID 6345] INFO  Processed 81344 of 106043 functions
+2022-03-24 12:46:38,540 [PID 6345] INFO  Processed 82336 of 106043 functions
+2022-03-24 12:46:39,103 [PID 6345] INFO  Processed 83328 of 106043 functions
+2022-03-24 12:46:39,757 [PID 6345] INFO  Processed 84320 of 106043 functions
+2022-03-24 12:46:40,126 [PID 6345] INFO  Processed 85312 of 106043 functions
+2022-03-24 12:46:40,254 [PID 6345] INFO  Processed 86304 of 106043 functions
+2022-03-24 12:46:40,926 [PID 6345] INFO  Processed 87296 of 106043 functions
+2022-03-24 12:46:41,090 [PID 6345] INFO  Processed 88288 of 106043 functions
+2022-03-24 12:46:41,129 [PID 6345] INFO  Processed 89280 of 106043 functions
+2022-03-24 12:46:42,052 [PID 6345] INFO  Processed 90272 of 106043 functions
+2022-03-24 12:46:42,263 [PID 6345] INFO  Processed 91264 of 106043 functions
+2022-03-24 12:46:42,299 [PID 6345] INFO  Processed 92256 of 106043 functions
+2022-03-24 12:46:42,808 [PID 6345] INFO  Processed 93248 of 106043 functions
+2022-03-24 12:46:42,954 [PID 6345] INFO  Processed 94240 of 106043 functions
+2022-03-24 12:46:43,014 [PID 6345] INFO  Processed 95232 of 106043 functions
+2022-03-24 12:46:43,557 [PID 6345] INFO  Processed 96224 of 106043 functions
+2022-03-24 12:46:43,565 [PID 6345] INFO  Processed 97216 of 106043 functions
+2022-03-24 12:46:43,832 [PID 6345] INFO  Processed 98208 of 106043 functions
+2022-03-24 12:46:44,260 [PID 6345] INFO  Processed 99200 of 106043 functions
+2022-03-24 12:46:44,320 [PID 6345] INFO  Processed 100192 of 106043 functions
+2022-03-24 12:46:44,461 [PID 6345] INFO  Processed 101184 of 106043 functions
+2022-03-24 12:46:44,874 [PID 6345] INFO  Processed 102176 of 106043 functions
+2022-03-24 12:46:45,049 [PID 6345] INFO  Processed 103168 of 106043 functions
+2022-03-24 12:46:45,306 [PID 6345] INFO  Processed 104160 of 106043 functions
+2022-03-24 12:46:45,399 [PID 6345] INFO  Processed 105051 of 106043 functions
+2022-03-24 12:46:46,767 [PID 6345] INFO  Processed 106043 of 106043 functions
+2022-03-24 12:46:46,767 [PID 6345] PERFORMANCE  Check_TypeCheck: 40.73s
+2022-03-24 12:46:46,767 [PID 6345] MEMORY  Shared memory size post-typecheck (size: 397)
+2022-03-24 12:46:46,768 [PID 6345] INFO  Postprocessing 6630 sources...
+2022-03-24 12:46:46,858 [PID 6345] INFO  Postprocessed 246 of 6630 sources
+2022-03-24 12:46:46,865 [PID 6345] INFO  Postprocessed 492 of 6630 sources
+2022-03-24 12:46:46,880 [PID 6345] INFO  Postprocessed 738 of 6630 sources
+2022-03-24 12:46:46,891 [PID 6345] INFO  Postprocessed 984 of 6630 sources
+2022-03-24 12:46:46,961 [PID 6345] INFO  Postprocessed 1230 of 6630 sources
+2022-03-24 12:46:46,968 [PID 6345] INFO  Postprocessed 1476 of 6630 sources
+2022-03-24 12:46:46,974 [PID 6345] INFO  Postprocessed 1722 of 6630 sources
+2022-03-24 12:46:47,042 [PID 6345] INFO  Postprocessed 1968 of 6630 sources
+2022-03-24 12:46:47,129 [PID 6345] INFO  Postprocessed 2214 of 6630 sources
+2022-03-24 12:46:47,149 [PID 6345] INFO  Postprocessed 2460 of 6630 sources
+2022-03-24 12:46:47,184 [PID 6345] INFO  Postprocessed 2706 of 6630 sources
+2022-03-24 12:46:47,251 [PID 6345] INFO  Postprocessed 2952 of 6630 sources
+2022-03-24 12:46:47,317 [PID 6345] INFO  Postprocessed 3198 of 6630 sources
+2022-03-24 12:46:47,357 [PID 6345] INFO  Postprocessed 3444 of 6630 sources
+2022-03-24 12:46:47,434 [PID 6345] INFO  Postprocessed 3690 of 6630 sources
+2022-03-24 12:46:47,447 [PID 6345] INFO  Postprocessed 3936 of 6630 sources
+2022-03-24 12:46:47,460 [PID 6345] INFO  Postprocessed 4182 of 6630 sources
+2022-03-24 12:46:47,482 [PID 6345] INFO  Postprocessed 4428 of 6630 sources
+2022-03-24 12:46:47,761 [PID 6345] INFO  Postprocessed 4674 of 6630 sources
+2022-03-24 12:46:48,016 [PID 6345] INFO  Postprocessed 4920 of 6630 sources
+2022-03-24 12:46:48,027 [PID 6345] INFO  Postprocessed 5166 of 6630 sources
+2022-03-24 12:46:48,036 [PID 6345] INFO  Postprocessed 5412 of 6630 sources
+2022-03-24 12:46:48,149 [PID 6345] INFO  Postprocessed 5658 of 6630 sources
+2022-03-24 12:46:48,158 [PID 6345] INFO  Postprocessed 5904 of 6630 sources
+2022-03-24 12:46:48,173 [PID 6345] INFO  Postprocessed 6150 of 6630 sources
+2022-03-24 12:46:48,307 [PID 6345] INFO  Postprocessed 6384 of 6630 sources
+2022-03-24 12:46:48,484 [PID 6345] INFO  Postprocessed 6630 of 6630 sources
+2022-03-24 12:46:48,544 [PID 6345] PERFORMANCE  Check: 60.03s
+2022-03-24 12:46:50,347 [PID 6345] ERROR Found 6971 type errors!
+2022-03-24 13:48:17,800 [PID 8296] INFO No binary specified, looking for `pyre.bin` in PATH
+2022-03-24 13:48:17,801 [PID 8296] INFO Could not determine the number of Pyre workers from configuration. Auto-set the value to 4.
+2022-03-24 13:48:17,801 [PID 8296] WARNING '/Users/aashaiavadhani/Library/Python/3.9/lib/python/site-packages' does not match any paths.
+2022-03-24 13:48:17,802 [PID 8296] INFO No typeshed specified, looking for it...
+2022-03-24 13:48:17,802 [PID 8296] INFO Found: `/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed`
+2022-03-24 13:48:17,806 [PID 8296] INFO Writing arguments into /var/folders/4_/4j5767wd24q0v592v721vgsr0000gn/T/pyre_arguments_eka9y0qu.json...
+2022-03-24 13:48:17,806 [PID 8296] DEBUG Arguments:
+{
+  "source_paths": {
+    "kind": "simple",
+    "paths": [
+      "/Users/aashaiavadhani/Desktop/FLP-Inventory"
+    ]
+  },
+  "search_paths": [
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/python3.9/site-packages",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stdlib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/DateTimeRange",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Deprecated",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Flask",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/JACK-Client",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Jinja2",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Markdown",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/MarkupSafe",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Pillow",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/PyMySQL",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/PyYAML",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Pygments",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Send2Trash",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/Werkzeug",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/aiofiles",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/annoy",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/appdirs",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/atomicwrites",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/aws-xray-sdk",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/babel",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/backports.ssl_match_hostname",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/backports_abc",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/beautifulsoup4",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/bleach",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/boto",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/braintree",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/cachetools",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/caldav",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/certifi",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/characteristic",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/chardet",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/click",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/click-spinner",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/colorama",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/commonmark",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/contextvars",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/croniter",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/cryptography",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/dataclasses",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/dateparser",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/decorator",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/docopt",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/docutils",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/editdistance",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/emoji",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/entrypoints",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/filelock",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/first",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/freezegun",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/frozendict",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/html5lib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/httplib2",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/humanfriendly",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/itsdangerous",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/jmespath",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/jsonschema",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/mock",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/mypy-extensions",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/mysqlclient",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/oauthlib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/orjson",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/paramiko",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/polib",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/prettytable",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/protobuf",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/psutil",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/psycopg2",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyOpenSSL",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyRFC3339",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyaudio",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pycurl",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyfarmhash",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pysftp",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pytest-lazy-fixture",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-dateutil",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-gflags",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-nmap",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/python-slugify",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pytz",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/pyvmomi",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/redis",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/requests",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/retry",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/selenium",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/setuptools",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/simplejson",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/singledispatch",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/six",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/slumber",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/stripe",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/tabulate",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/termcolor",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/toml",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/toposort",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/ttkthemes",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/typed-ast",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/tzlocal",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/ujson",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/vobject",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/waitress",
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory/djangoEnv/lib/pyre_check/typeshed/stubs/xxhash"
+  ],
+  "excludes": [],
+  "checked_directory_allowlist": [
+    "/Users/aashaiavadhani/Desktop/FLP-Inventory"
+  ],
+  "checked_directory_blocklist": [],
+  "extensions": [],
+  "log_path": "/Users/aashaiavadhani/Desktop/FLP-Inventory/.pyre",
+  "global_root": "/Users/aashaiavadhani/Desktop/FLP-Inventory",
+  "debug": false,
+  "python_version": {
+    "major": 3,
+    "minor": 9,
+    "micro": 10
+  },
+  "shared_memory": {},
+  "parallel": true,
+  "number_of_workers": 4,
+  "additional_logging_sections": [],
+  "show_error_traces": false,
+  "strict": false
+}
+2022-03-24 13:48:17,999 [PID 8296] INFO  Initializing shared memory [heap_size=8589934592, dep_table_pow=27, hash_table_pow=26]
+2022-03-24 13:48:18,004 [PID 8296] INFO  Building module tracker...
+2022-03-24 13:48:19,138 [PID 8296] PERFORMANCE  Module tracker built: 1.13s
+2022-03-24 13:48:19,138 [PID 8296] INFO  Building type environment...
+2022-03-24 13:48:19,354 [PID 8296] INFO  Parsing 6630 stubs and sources...
+2022-03-24 13:48:28,295 [PID 8296] PERFORMANCE  Sources parsed: 8.94s
+2022-03-24 13:48:34,854 [PID 8296] PERFORMANCE  Full environment built: 15.71s
+2022-03-24 13:48:35,130 [PID 8296] INFO  Checking 106043 functions...
+2022-03-24 13:48:36,349 [PID 8296] INFO  Processed 992 of 106043 functions
+2022-03-24 13:48:36,592 [PID 8296] INFO  Processed 1984 of 106043 functions
+2022-03-24 13:48:36,648 [PID 8296] INFO  Processed 2976 of 106043 functions
+2022-03-24 13:48:36,684 [PID 8296] INFO  Processed 3968 of 106043 functions
+2022-03-24 13:48:37,168 [PID 8296] INFO  Processed 4960 of 106043 functions
+2022-03-24 13:48:37,363 [PID 8296] INFO  Processed 5952 of 106043 functions
+2022-03-24 13:48:37,524 [PID 8296] INFO  Processed 6944 of 106043 functions
+2022-03-24 13:48:37,618 [PID 8296] INFO  Processed 7936 of 106043 functions
+2022-03-24 13:48:38,254 [PID 8296] INFO  Processed 8928 of 106043 functions
+2022-03-24 13:48:38,529 [PID 8296] INFO  Processed 9920 of 106043 functions
+2022-03-24 13:48:38,636 [PID 8296] INFO  Processed 10912 of 106043 functions
+2022-03-24 13:48:39,258 [PID 8296] INFO  Processed 11904 of 106043 functions
+2022-03-24 13:48:39,734 [PID 8296] INFO  Processed 12896 of 106043 functions
+2022-03-24 13:48:40,048 [PID 8296] INFO  Processed 13888 of 106043 functions
+2022-03-24 13:48:40,328 [PID 8296] INFO  Processed 14880 of 106043 functions
+2022-03-24 13:48:40,590 [PID 8296] INFO  Processed 15872 of 106043 functions
+2022-03-24 13:48:41,065 [PID 8296] INFO  Processed 16864 of 106043 functions
+2022-03-24 13:48:41,502 [PID 8296] INFO  Processed 17856 of 106043 functions
+2022-03-24 13:48:41,629 [PID 8296] INFO  Processed 18848 of 106043 functions
+2022-03-24 13:48:42,279 [PID 8296] INFO  Processed 19840 of 106043 functions
+2022-03-24 13:48:42,290 [PID 8296] INFO  Processed 20832 of 106043 functions
+2022-03-24 13:48:43,808 [PID 8296] INFO  Processed 21824 of 106043 functions
+2022-03-24 13:48:43,873 [PID 8296] INFO  Processed 22816 of 106043 functions
+2022-03-24 13:48:45,746 [PID 8296] INFO  Processed 23808 of 106043 functions
+2022-03-24 13:48:45,894 [PID 8296] INFO  Processed 24800 of 106043 functions
+2022-03-24 13:48:46,268 [PID 8296] INFO  Processed 25792 of 106043 functions
+2022-03-24 13:48:47,521 [PID 8296] INFO  Processed 26784 of 106043 functions
+2022-03-24 13:48:47,591 [PID 8296] INFO  Processed 27776 of 106043 functions
+2022-03-24 13:48:47,627 [PID 8296] INFO  Processed 28768 of 106043 functions
+2022-03-24 13:48:47,735 [PID 8296] INFO  Processed 29760 of 106043 functions
+2022-03-24 13:48:48,625 [PID 8296] INFO  Processed 30752 of 106043 functions
+2022-03-24 13:48:48,699 [PID 8296] INFO  Processed 31744 of 106043 functions
+2022-03-24 13:48:49,190 [PID 8296] INFO  Processed 32736 of 106043 functions
+2022-03-24 13:48:49,659 [PID 8296] INFO  Processed 33728 of 106043 functions
+2022-03-24 13:48:49,886 [PID 8296] INFO  Processed 34720 of 106043 functions
+2022-03-24 13:48:50,221 [PID 8296] INFO  Processed 35712 of 106043 functions
+2022-03-24 13:48:50,507 [PID 8296] INFO  Processed 36704 of 106043 functions
+2022-03-24 13:48:51,286 [PID 8296] INFO  Processed 37696 of 106043 functions
+2022-03-24 13:48:51,335 [PID 8296] INFO  Processed 38688 of 106043 functions
+2022-03-24 13:48:51,929 [PID 8296] INFO  Processed 39680 of 106043 functions
+2022-03-24 13:48:52,221 [PID 8296] INFO  Processed 40672 of 106043 functions
+2022-03-24 13:48:52,537 [PID 8296] INFO  Processed 41664 of 106043 functions
+2022-03-24 13:48:52,808 [PID 8296] INFO  Processed 42656 of 106043 functions
+2022-03-24 13:48:53,047 [PID 8296] INFO  Processed 43648 of 106043 functions
+2022-03-24 13:48:53,288 [PID 8296] INFO  Processed 44640 of 106043 functions
+2022-03-24 13:48:53,773 [PID 8296] INFO  Processed 45632 of 106043 functions
+2022-03-24 13:48:53,803 [PID 8296] INFO  Processed 46624 of 106043 functions
+2022-03-24 13:48:54,033 [PID 8296] INFO  Processed 47616 of 106043 functions
+2022-03-24 13:48:54,778 [PID 8296] INFO  Processed 48608 of 106043 functions
+2022-03-24 13:48:54,841 [PID 8296] INFO  Processed 49600 of 106043 functions
+2022-03-24 13:48:54,977 [PID 8296] INFO  Processed 50592 of 106043 functions
+2022-03-24 13:48:55,428 [PID 8296] INFO  Processed 51584 of 106043 functions
+2022-03-24 13:48:55,456 [PID 8296] INFO  Processed 52576 of 106043 functions
+2022-03-24 13:48:55,751 [PID 8296] INFO  Processed 53568 of 106043 functions
+2022-03-24 13:48:56,179 [PID 8296] INFO  Processed 54560 of 106043 functions
+2022-03-24 13:48:56,209 [PID 8296] INFO  Processed 55552 of 106043 functions
+2022-03-24 13:48:56,588 [PID 8296] INFO  Processed 56544 of 106043 functions
+2022-03-24 13:48:57,115 [PID 8296] INFO  Processed 57536 of 106043 functions
+2022-03-24 13:48:58,061 [PID 8296] INFO  Processed 58528 of 106043 functions
+2022-03-24 13:48:58,566 [PID 8296] INFO  Processed 59520 of 106043 functions
+2022-03-24 13:48:58,606 [PID 8296] INFO  Processed 60512 of 106043 functions
+2022-03-24 13:48:59,710 [PID 8296] INFO  Processed 61504 of 106043 functions
+2022-03-24 13:48:59,954 [PID 8296] INFO  Processed 62496 of 106043 functions
+2022-03-24 13:49:00,270 [PID 8296] INFO  Processed 63488 of 106043 functions
+2022-03-24 13:49:00,576 [PID 8296] INFO  Processed 64480 of 106043 functions
+2022-03-24 13:49:00,679 [PID 8296] INFO  Processed 65472 of 106043 functions
+2022-03-24 13:49:01,114 [PID 8296] INFO  Processed 66464 of 106043 functions
+2022-03-24 13:49:01,308 [PID 8296] INFO  Processed 67456 of 106043 functions
+2022-03-24 13:49:01,700 [PID 8296] INFO  Processed 68448 of 106043 functions
+2022-03-24 13:49:02,645 [PID 8296] INFO  Processed 69440 of 106043 functions
+2022-03-24 13:49:03,575 [PID 8296] INFO  Processed 70432 of 106043 functions
+2022-03-24 13:49:04,118 [PID 8296] INFO  Processed 71424 of 106043 functions
+2022-03-24 13:49:04,672 [PID 8296] INFO  Processed 72416 of 106043 functions
+2022-03-24 13:49:04,962 [PID 8296] INFO  Processed 73408 of 106043 functions
+2022-03-24 13:49:05,885 [PID 8296] INFO  Processed 74400 of 106043 functions
+2022-03-24 13:49:06,863 [PID 8296] INFO  Processed 75392 of 106043 functions
+2022-03-24 13:49:07,587 [PID 8296] INFO  Processed 76384 of 106043 functions
+2022-03-24 13:49:08,099 [PID 8296] INFO  Processed 77376 of 106043 functions
+2022-03-24 13:49:08,544 [PID 8296] INFO  Processed 78368 of 106043 functions
+2022-03-24 13:49:08,939 [PID 8296] INFO  Processed 79360 of 106043 functions
+2022-03-24 13:49:09,502 [PID 8296] INFO  Processed 80352 of 106043 functions
+2022-03-24 13:49:09,856 [PID 8296] INFO  Processed 81344 of 106043 functions
+2022-03-24 13:49:10,400 [PID 8296] INFO  Processed 82336 of 106043 functions
+2022-03-24 13:49:11,046 [PID 8296] INFO  Processed 83328 of 106043 functions
+2022-03-24 13:49:11,680 [PID 8296] INFO  Processed 84320 of 106043 functions
+2022-03-24 13:49:12,159 [PID 8296] INFO  Processed 85312 of 106043 functions
+2022-03-24 13:49:12,258 [PID 8296] INFO  Processed 86304 of 106043 functions
+2022-03-24 13:49:12,934 [PID 8296] INFO  Processed 87296 of 106043 functions
+2022-03-24 13:49:13,201 [PID 8296] INFO  Processed 88288 of 106043 functions
+2022-03-24 13:49:13,227 [PID 8296] INFO  Processed 89280 of 106043 functions
+2022-03-24 13:49:14,110 [PID 8296] INFO  Processed 90272 of 106043 functions
+2022-03-24 13:49:14,412 [PID 8296] INFO  Processed 91264 of 106043 functions
+2022-03-24 13:49:14,447 [PID 8296] INFO  Processed 92256 of 106043 functions
+2022-03-24 13:49:14,906 [PID 8296] INFO  Processed 93248 of 106043 functions
+2022-03-24 13:49:15,140 [PID 8296] INFO  Processed 94240 of 106043 functions
+2022-03-24 13:49:15,210 [PID 8296] INFO  Processed 95232 of 106043 functions
+2022-03-24 13:49:15,701 [PID 8296] INFO  Processed 96224 of 106043 functions
+2022-03-24 13:49:15,778 [PID 8296] INFO  Processed 97216 of 106043 functions
+2022-03-24 13:49:16,101 [PID 8296] INFO  Processed 98208 of 106043 functions
+2022-03-24 13:49:16,511 [PID 8296] INFO  Processed 99200 of 106043 functions
+2022-03-24 13:49:16,532 [PID 8296] INFO  Processed 100192 of 106043 functions
+2022-03-24 13:49:16,753 [PID 8296] INFO  Processed 101184 of 106043 functions
+2022-03-24 13:49:17,068 [PID 8296] INFO  Processed 102176 of 106043 functions
+2022-03-24 13:49:17,227 [PID 8296] INFO  Processed 103168 of 106043 functions
+2022-03-24 13:49:17,506 [PID 8296] INFO  Processed 104160 of 106043 functions
+2022-03-24 13:49:17,538 [PID 8296] INFO  Processed 105051 of 106043 functions
+2022-03-24 13:49:19,131 [PID 8296] INFO  Processed 106043 of 106043 functions
+2022-03-24 13:49:19,131 [PID 8296] PERFORMANCE  Check_TypeCheck: 43.99s
+2022-03-24 13:49:19,131 [PID 8296] MEMORY  Shared memory size post-typecheck (size: 397)
+2022-03-24 13:49:19,131 [PID 8296] INFO  Postprocessing 6630 sources...
+2022-03-24 13:49:19,223 [PID 8296] INFO  Postprocessed 246 of 6630 sources
+2022-03-24 13:49:19,231 [PID 8296] INFO  Postprocessed 492 of 6630 sources
+2022-03-24 13:49:19,251 [PID 8296] INFO  Postprocessed 738 of 6630 sources
+2022-03-24 13:49:19,257 [PID 8296] INFO  Postprocessed 984 of 6630 sources
+2022-03-24 13:49:19,330 [PID 8296] INFO  Postprocessed 1230 of 6630 sources
+2022-03-24 13:49:19,338 [PID 8296] INFO  Postprocessed 1476 of 6630 sources
+2022-03-24 13:49:19,342 [PID 8296] INFO  Postprocessed 1722 of 6630 sources
+2022-03-24 13:49:19,418 [PID 8296] INFO  Postprocessed 1968 of 6630 sources
+2022-03-24 13:49:19,492 [PID 8296] INFO  Postprocessed 2214 of 6630 sources
+2022-03-24 13:49:19,512 [PID 8296] INFO  Postprocessed 2460 of 6630 sources
+2022-03-24 13:49:19,551 [PID 8296] INFO  Postprocessed 2706 of 6630 sources
+2022-03-24 13:49:19,613 [PID 8296] INFO  Postprocessed 2952 of 6630 sources
+2022-03-24 13:49:19,682 [PID 8296] INFO  Postprocessed 3198 of 6630 sources
+2022-03-24 13:49:19,725 [PID 8296] INFO  Postprocessed 3444 of 6630 sources
+2022-03-24 13:49:19,802 [PID 8296] INFO  Postprocessed 3690 of 6630 sources
+2022-03-24 13:49:19,816 [PID 8296] INFO  Postprocessed 3936 of 6630 sources
+2022-03-24 13:49:19,823 [PID 8296] INFO  Postprocessed 4182 of 6630 sources
+2022-03-24 13:49:19,837 [PID 8296] INFO  Postprocessed 4428 of 6630 sources
+2022-03-24 13:49:19,935 [PID 8296] INFO  Postprocessed 4674 of 6630 sources
+2022-03-24 13:49:20,053 [PID 8296] INFO  Postprocessed 4920 of 6630 sources
+2022-03-24 13:49:20,066 [PID 8296] INFO  Postprocessed 5166 of 6630 sources
+2022-03-24 13:49:20,117 [PID 8296] INFO  Postprocessed 5412 of 6630 sources
+2022-03-24 13:49:20,195 [PID 8296] INFO  Postprocessed 5658 of 6630 sources
+2022-03-24 13:49:20,222 [PID 8296] INFO  Postprocessed 5904 of 6630 sources
+2022-03-24 13:49:20,239 [PID 8296] INFO  Postprocessed 6150 of 6630 sources
+2022-03-24 13:49:20,357 [PID 8296] INFO  Postprocessed 6384 of 6630 sources
+2022-03-24 13:49:20,499 [PID 8296] INFO  Postprocessed 6630 of 6630 sources
+2022-03-24 13:49:20,560 [PID 8296] PERFORMANCE  Check: 62.54s
+2022-03-24 13:49:22,407 [PID 8296] ERROR Found 6971 type errors!
