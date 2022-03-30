@@ -28,7 +28,9 @@ class Command(BaseCommand):
             elif itemName.endswith("girl)"):
                 name_new = itemName
                 item_mapped = name_new.split()[0]
-
+            else:
+                raise Exception("ill-formatted string detected: "+itemName)
+                
             if (len(name_new.split()) > 1) and name_new.split()[1] == "socks":
                 item_mapped = "socks"
             if ("snowsuit" in item_mapped):  #this branch is to cope with one typo, no subtle way to put this.
@@ -112,11 +114,12 @@ class Command(BaseCommand):
                 item_new = Item.objects.get(name = item_mapped + " " + size_mapped)
                 ins.item_id = item_new.id
                 ins.save()
+        print("transaction updated.\n")
 
             
     def handle(self, *args, **options):
-        # self._add_outdated()
-        # self._add_newitems()
-        # self._update_newitems()
+        self._add_outdated()
+        self._add_newitems()
+        self._update_newitems()
         self._update_item_transaction()
 
