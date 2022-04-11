@@ -92,19 +92,6 @@ class Command(BaseCommand):
                 newQuantity = item_new.quantity + (t.quantity if t.quantity>0 else 0)
                 item_new.quantity = newQuantity
                 item_new.save()         
-         
-    # def _update_checkins(self):
-    #     for ins in Checkin.objects.all():
-    #         newItemList = []
-    #         for item in ins.items:
-    #             print(ins)
-    #             item_mapped, size_mapped = map(item.name)
-    #             newItem = Item.objects.get(name = item_mapped + " " + size_mapped)
-    #             newItemList.append(newItem)
-            
-    # def _update_checkouts(self):
-    #     for ins in Checkin.objects.all():
-    #         print(ins)
 
     def _update_item_transaction(self):
         for ins in ItemTransaction.objects.all():
