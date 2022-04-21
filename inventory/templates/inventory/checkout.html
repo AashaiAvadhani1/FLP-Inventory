@@ -88,6 +88,12 @@
         updateBtn.href = (updateBtn.href).replace('10', '1')
       }
     }
+
+    function autoFill(catName) {
+       var s = document.getElementById('id_item');
+       s.value = catName;
+       console.log(document.getElementById('id_item').value)
+     }
   
   </script>
 
@@ -292,7 +298,9 @@
       $("#checkout-btn").on('click', function(){
         localStorage.removeItem("family")
       })
-
+      $("#auto-btn1, #auto-btn2, #auto-btn3, #auto-btn4, #auto-btn5, #auto-btn6, #auto-btn7, #auto-btn8, #auto-btn9, #auto-btn10").on('click', function(){
+         $("#id_item").autocomplete('search', $("#id_item").val())
+       })
       $("#id_item").autocomplete({
         source: '{% url "autocomplete_item" %}',
         minLength: 2
