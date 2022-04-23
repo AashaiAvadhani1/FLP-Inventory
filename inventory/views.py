@@ -42,6 +42,9 @@ def home(request):
 def about(request):
 	return render(request, 'inventory/about.html')
 
+#create a new function and template (html template) for the privacy policy page.
+def privacy_policy(request):
+    return render(request, 'inventory/policy.html')
 
 ######################### AUTH VIEWS ##########################
 
