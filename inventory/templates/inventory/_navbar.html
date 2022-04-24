@@ -61,6 +61,13 @@
 						{% url 'About' as about_url %}
 						<a class="nav-link {% if request.path == about_url %}active{% endif %}" href="{{ about_url }}">About</a>
 					</li>
+
+					<!--Privacy Policy page -->
+					<li class="nav-item">
+						{% url 'PrivacyPolicy' as privacy_url %}
+						<a class="nav-link {% if request.path == privacy_url %}active{% endif %}" href="{{ privacy_url }}">Privacy Policy</a>
+					</li>
+
 				{% endif %}
 			
 			</ul>
