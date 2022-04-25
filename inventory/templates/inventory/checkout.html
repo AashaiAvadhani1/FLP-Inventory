@@ -206,6 +206,10 @@
     <div class="col-md-4" id="additemform">
       <h4>Add To Cart</h4>
       <form method="POST" action="{% url 'Checkout' %}">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3118388684623eca56204391565831a8b66a75ad
         <table>
           <tr>
             {% load static %}
@@ -223,6 +227,11 @@
             <td><button id="auto-btn10" class="btn btn-warning" href="#" onClick="autoFill('stuffed animal'); return false;"><img src="{% static 'images/stuffed_animal.png' %}" width="30" height="30"></button></td>
           </tr>
          </table>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> master
+>>>>>>> 3118388684623eca56204391565831a8b66a75ad
           {% for field in formadditem %}
           <div class="fieldWrapper form-group" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
               {{ field.label_tag }}
