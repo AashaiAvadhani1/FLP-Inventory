@@ -8,11 +8,9 @@ from email.mime.application import MIMEApplication
 import shutil
 
 MODELS_TO_BACKUP = [Family, Category, Item, ItemTransaction, Checkin, Checkout]
-DIR_HERE = os.path.dirname(__file__)
 BACKUPSQL_NAME = 'backup_db.sqlite3'
 ZIPFILE_NAME = 'backup.zip'
-DIR_HERE = os.path.dirname(__file__)
-PATH = os.path.abspath(os.path.join(DIR_HERE, '../../../db_backups'))
+PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../db_backups'))
 
 class Command(BaseCommand):
     args = 'this function takes one argument, which is the email you want to send the backups to'
@@ -22,9 +20,6 @@ class Command(BaseCommand):
         parser.add_argument('email')
 
     def copy_db(self):
-        # print("PATH: " + PATH)
-        # print("SQL PATH: " + os.path.join(PATH, BACKUPSQL_NAME))
-        # print("ZIP PATH: " + os.path.join(PATH, ZIPFILE_NAME))
         if not os.path.exists('db_backups'):
             os.makedirs('db_backups')
         shutil.copyfile("./db.sqlite3", os.path.join(PATH, BACKUPSQL_NAME))
