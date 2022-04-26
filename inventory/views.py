@@ -1,3 +1,7 @@
+import json
+import calendar
+import csv
+import io
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.core import serializers
@@ -10,8 +14,8 @@ from .tables import FamilyTable, CategoryTable, ItemTable, CheckinTable, Checkou
 from django.contrib import messages
 from django.http import HttpResponse
 
-from pydrive2.auth import GoogleAuth
-from pydrive2.drive import GoogleDrive
+from inventory.gdrive import Create_Service
+from googleapiclient.http import MediaIoBaseUpload
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -26,13 +30,16 @@ from inventory.forms import LoginForm, AddItemForm, CheckOutForm, CreateFamilyFo
 from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta
 from collections import defaultdict
-from io import StringIO
-import json
-import calendar
-import csv
 
 DEFAULT_PAGINATION_SIZE = 25
 LOW_QUANTITY_THRESHOLD = 10 # this number or below is considered low quantity
+
+######################### GOOGLE DRIVE VARIABLES #########################
+
+SCOPES = ['https://www.googleapis.com/auth/drive.file']
+CLIENT_SECRET_FILE = 'client_secrets.json'
+API_NAME = 'drive'
+API_VERSION = 'v3'
 
 ######################### BASIC VIEWS #########################
 
@@ -101,12 +108,13 @@ def generate_report(request):
             return write_export_data(request, context, response)
 
         if 'export_drive' in request.POST:
-            si = StringIO()
-            drive = google_auth()
+            si = io.StringIO()
+            (drive, displayMessage) = google_auth()
             write_export_data(request, context, si)
             
             fileTitle = context['tx_type'] + ' Report By Item ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
             upload_to_gdrive(fileTitle, drive, si)
+            context['displayMessage'] = displayMessage
             return render(request, 'inventory/reports/generate_report.html', context)
 
         if 'itemizedOutput' in request.POST:
@@ -129,8 +137,8 @@ def generate_report(request):
             return write_export_table_data(request, context, response)
 
         if 'export_drive_table' in request.POST:
-            si = StringIO()
-            drive = google_auth()
+            si = io.StringIO()
+            (drive, displayMessage) = google_auth()
             write_export_table_data(request, context, si)
 
             if 'itemizedOutput' in request.POST:
@@ -139,6 +147,9 @@ def generate_report(request):
                 fileTitle = context['tx_type'] + ' Report ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
 
             upload_to_gdrive(fileTitle, drive, si)
+            print("DISPLAY MSG: " + str(displayMessage) )
+            context['displayMessage'] = displayMessage
+            print("CONTEXT: " + str(context))
             return render(request, 'inventory/reports/generate_report.html', context)
 
     today = date.today()
@@ -273,14 +284,24 @@ def write_export_data(request, context, csvObj):
     return csvObj
 
 def google_auth():
-    gauth = GoogleAuth(settings_file='settings.yaml')
-    gauth.LocalWebserverAuth()
-    return GoogleDrive(gauth)
+    return Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
+    # gauth = GoogleAuth(settings_file='settings.yaml')
+    # gauth.LocalWebserverAuth()
+    # return GoogleDrive(gauth)
 
 def upload_to_gdrive(fileTitle, driveObj, csvObj):
-    csvFile = driveObj.CreateFile({'title': fileTitle, 'mimeType': 'text/csv'})
-    csvFile.SetContentString(csvObj.getvalue().strip('\r\n'))
-    csvFile.Upload()
+    fileMetaData = {
+        'name': fileTitle,
+        'mimeType': 'application/vnd.google-apps.spreadsheet'
+    }
+
+    csvString = csvObj.getvalue().strip('\r\n')
+    bio = io.BytesIO(csvString.encode('utf-8'))
+    csvUpload = MediaIoBaseUpload(bio, mimetype='text/csv', resumable=True)
+    driveObj.files().create(body=fileMetaData, media_body=csvUpload).execute()
+    # if displayMessage:
+    #     pymsgbox.alert('Report Successfully Exported to Google Drive', 'Google Drive Export', timeout=5000)
+
 
 ######################### ANALYTICS #########################
 @login_required
@@ -791,3 +812,8 @@ def getPagination(request, objects, count):
     except EmptyPage:
         paginationOut = paginator.page(paginator.num_pages)
     return paginationOut
+
+
+
+
+
