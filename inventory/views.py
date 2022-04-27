@@ -14,7 +14,7 @@ from .tables import FamilyTable, CategoryTable, ItemTable, CheckinTable, Checkou
 from django.contrib import messages
 from django.http import HttpResponse
 
-from inventory.gdrive import Create_Service
+from inventory.gdrive import gdrive_auth_request, create_service
 from googleapiclient.http import MediaIoBaseUpload
 
 from django.contrib.auth import authenticate, login, logout
@@ -33,13 +33,6 @@ from collections import defaultdict
 
 DEFAULT_PAGINATION_SIZE = 25
 LOW_QUANTITY_THRESHOLD = 10 # this number or below is considered low quantity
-
-######################### GOOGLE DRIVE VARIABLES #########################
-
-SCOPES = ['https://www.googleapis.com/auth/drive.file']
-CLIENT_SECRET_FILE = 'client_secrets.json'
-API_NAME = 'drive'
-API_VERSION = 'v3'
 
 ######################### BASIC VIEWS #########################
 
@@ -79,12 +72,15 @@ def logout_action(request):
 
 @login_required(login_url='login')
 def generate_report(request):
+    print("REQUEST: " + str(request.POST))
+    print("GET REQUEST: " + str(request.GET))
     context = {}
 
-    if 'start-date' in request.POST \
+    if ('start-date' in request.POST \
         and 'end-date' in request.POST \
         and 'tx-type' in request.POST \
-        and (request.POST['tx-type'] in ['Checkin', 'Checkout']):
+        and (request.POST['tx-type'] in ['Checkin', 'Checkout'])) \
+        or 'code' in request.GET:
 
         context['endDate'] = request.POST['end-date']
         context['startDate'] = request.POST['start-date']
@@ -109,20 +105,24 @@ def generate_report(request):
 
         if 'export_drive' in request.POST:
             si = io.StringIO()
-            (drive, displayMessage) = google_auth()
-            write_export_data(request, context, si)
-            
-            fileTitle = context['tx_type'] + ' Report By Item ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
-            upload_to_gdrive(fileTitle, drive, si)
-            context['displayMessage'] = displayMessage
-            return render(request, 'inventory/reports/generate_report.html', context)
+            if True:
+                print("tomas is fat")
+                gdrive_auth_request()
+            else:
+                drive = create_service(request)
+                write_export_data(request, context, si)
+                
+                fileTitle = context['tx_type'] + ' Report By Item ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
+                upload_to_gdrive(fileTitle, drive, si)
+                return render(request, 'inventory/reports/generate_report.html', context)
 
         if 'itemizedOutput' in request.POST:
             context['itemizedOutput'] = request.POST['itemizedOutput']
             collect_itemized_data(context)
            
         if 'export_table' not in request.POST \
-            and 'export_drive_table' not in request.POST:
+            and 'export_drive_table' not in request.POST \
+            and 'code' not in request.GET:
             context['results'] = getPagination(request, context['results'], DEFAULT_PAGINATION_SIZE)
             return render(request, 'inventory/reports/generate_report.html', context)
 
@@ -136,21 +136,25 @@ def generate_report(request):
 
             return write_export_table_data(request, context, response)
 
-        if 'export_drive_table' in request.POST:
+        if 'export_drive_table' in request.POST \
+            or 'code' in request.GET:
             si = io.StringIO()
-            (drive, displayMessage) = google_auth()
-            write_export_table_data(request, context, si)
-
-            if 'itemizedOutput' in request.POST:
-                fileTitle = context['tx_type'] + ' Report By Item ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
+            if 'code' not in request.GET:
+                print("tomas is fat")
+                gdrive_auth_request()
             else:
-                fileTitle = context['tx_type'] + ' Report ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
+                print("context: "+ str(context))
+                drive = create_service(request)
+                write_export_table_data(request, context, si)
 
-            upload_to_gdrive(fileTitle, drive, si)
-            print("DISPLAY MSG: " + str(displayMessage) )
-            context['displayMessage'] = displayMessage
-            print("CONTEXT: " + str(context))
-            return render(request, 'inventory/reports/generate_report.html', context)
+                if 'itemizedOutput' in request.POST:
+                    fileTitle = context['tx_type'] + ' Report By Item ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
+                else:
+                    fileTitle = context['tx_type'] + ' Report ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
+
+                upload_to_gdrive(fileTitle, drive, si)
+
+                return render(request, 'inventory/reports/generate_report.html', context)
 
     today = date.today()
     weekAgo = today - timedelta(days=7)
@@ -283,12 +287,6 @@ def write_export_data(request, context, csvObj):
 
     return csvObj
 
-def google_auth():
-    return Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
-    # gauth = GoogleAuth(settings_file='settings.yaml')
-    # gauth.LocalWebserverAuth()
-    # return GoogleDrive(gauth)
-
 def upload_to_gdrive(fileTitle, driveObj, csvObj):
     fileMetaData = {
         'name': fileTitle,
@@ -299,8 +297,6 @@ def upload_to_gdrive(fileTitle, driveObj, csvObj):
     bio = io.BytesIO(csvString.encode('utf-8'))
     csvUpload = MediaIoBaseUpload(bio, mimetype='text/csv', resumable=True)
     driveObj.files().create(body=fileMetaData, media_body=csvUpload).execute()
-    # if displayMessage:
-    #     pymsgbox.alert('Report Successfully Exported to Google Drive', 'Google Drive Export', timeout=5000)
 
 
 ######################### ANALYTICS #########################
