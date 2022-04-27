@@ -74,7 +74,8 @@ def logout_action(request):
 def generate_report(request):
     print("REQUEST: " + str(request.POST))
     print("GET REQUEST: " + str(request.GET))
-    context = {}
+    if 'code' not in request.GET:
+        context = {}
 
     if ('start-date' in request.POST \
         and 'end-date' in request.POST \
@@ -82,21 +83,22 @@ def generate_report(request):
         and (request.POST['tx-type'] in ['Checkin', 'Checkout'])) \
         or 'code' in request.GET:
 
-        context['endDate'] = request.POST['end-date']
-        context['startDate'] = request.POST['start-date']
-        context['tx'] = request.POST['tx-type']
+        if 'code' not in request.GET:
+            context['endDate'] = request.POST['end-date']
+            context['startDate'] = request.POST['start-date']
+            context['tx'] = request.POST['tx-type']
 
-        endDatetime = datetime.strptime('{} 23:59:59'.format(context['endDate']), '%Y-%m-%d %H:%M:%S')
+            endDatetime = datetime.strptime('{} 23:59:59'.format(context['endDate']), '%Y-%m-%d %H:%M:%S')
 
-        if request.POST['tx-type'] == 'Checkin':
-            context['results'] = Checkin.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
-        else:
-            context['results'] = Checkout.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
-        context['tx_type'] = request.POST['tx-type']
+            if request.POST['tx-type'] == 'Checkin':
+                context['results'] = Checkin.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
+            else:
+                context['results'] = Checkout.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
+            context['tx_type'] = request.POST['tx-type']
 
-        context['totalValue'] = 0 
-        for result in context['results']:
-            context['totalValue'] = result.getValue() + context['totalValue']
+            context['totalValue'] = 0 
+            for result in context['results']:
+                context['totalValue'] = result.getValue() + context['totalValue']
 
         if 'export' in request.POST:
             response = HttpResponse()
