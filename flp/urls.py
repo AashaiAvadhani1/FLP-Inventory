@@ -24,6 +24,7 @@ urlpatterns = [
     path('autocomplete_item/', views.autocomplete_item, name="autocomplete_item"),
     path('autocomplete_family/', views.autocomplete_family, name="autocomplete_family"),
     path('about/', views.about, name="About"),  
+    path('PrivacyPolicy/', views.privacy_policy, name="PrivacyPolicy"),  
 
     # AUTH ROUTES 
     path('login/', views.login_action, name='Login'),
