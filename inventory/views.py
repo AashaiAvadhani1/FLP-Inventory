@@ -102,7 +102,7 @@ def generate_report(request):
             si = io.StringIO()
 
             if 'code' not in request.GET:
-                save_session_keys(request, context)
+                save_session_keys(request)
                 return redirect(get_auth_url())
             else:
                 drive = create_service(request)
@@ -139,7 +139,7 @@ def generate_report(request):
             si = io.StringIO()
 
             if 'code' not in request.GET:
-                save_session_keys(request, context)
+                save_session_keys(request)
                 return redirect(get_auth_url())
             else:
                 drive = create_service(request)
@@ -300,7 +300,7 @@ def set_context_vars_get(request, context):
 
     if 'itemizedOutput' in request.session:
         context['itemizedOutput'] = request.session['itemizedOutput']
-        context['results'] = request.session['results']
+        collect_itemized_data(context)
 
     context['totalValue'] = 0 
     for result in context['results']:
@@ -326,7 +326,7 @@ def set_context_vars_post(request, context):
     for result in context['results']:
         context['totalValue'] = result.getValue() + context['totalValue']
 
-def save_session_keys(request, context):
+def save_session_keys(request):
     if 'end-date' in request.POST:
         request.session['end-date'] = request.POST['end-date']
     if 'start-date' in request.POST:
@@ -339,8 +339,6 @@ def save_session_keys(request, context):
         request.session['export_drive_table'] = request.POST['export_drive_table']
     if 'itemizedOutput' in request.POST:
         request.session['itemizedOutput'] = request.POST['itemizedOutput']
-    if 'results' in context:
-        request.session['results'] = context['results']
 
 def delete_session_keys(request):
     try:
