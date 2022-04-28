@@ -14,7 +14,7 @@ from .tables import FamilyTable, CategoryTable, ItemTable, CheckinTable, Checkou
 from django.contrib import messages
 from django.http import HttpResponse
 
-from inventory.gdrive import get_auth_url, create_service, upload_to_gdrive
+from inventory.gdrive import get_auth_url, create_service, upload_to_gdrive, set_gdrive_message
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -80,12 +80,15 @@ def generate_report(request):
         and 'end-date' in request.POST \
         and 'tx-type' in request.POST \
         and (request.POST['tx-type'] in ['Checkin', 'Checkout'])) \
-        or 'code' in request.GET:
+        or 'code' in request.GET \
+        or 'error' in request.GET:
 
         if 'code' in request.GET:
             set_context_vars_get(request, context)
         else: 
             set_context_vars_post(request, context)
+        
+        set_gdrive_message(request, context)
                 
         if 'export' in request.POST:
             response = HttpResponse()
@@ -97,17 +100,18 @@ def generate_report(request):
 
             si = io.StringIO()
 
-            if 'code' not in request.GET:
+            if 'code' not in request.GET \
+                and 'error' not in request.GET:
                 save_session_keys(request)
                 return redirect(get_auth_url())
-            else:
+            if 'code' in request.GET:
                 drive = create_service(request)
                 write_export_data(request, context, si)
                 
                 fileTitle = context['tx_type'] + ' Report By Item ' + context['startDate'] + " to " + context['endDate'] + '.csv'
                 upload_to_gdrive(fileTitle, drive, si)
                 delete_session_keys(request)
-                return render(request, 'inventory/reports/generate_report.html', context)
+            return render(request, 'inventory/reports/generate_report.html', context)
 
         if 'itemizedOutput' in request.POST:
             context['itemizedOutput'] = request.POST['itemizedOutput']
@@ -134,10 +138,11 @@ def generate_report(request):
 
             si = io.StringIO()
 
-            if 'code' not in request.GET:
+            if 'code' not in request.GET \
+                and 'error' not in request.GET:
                 save_session_keys(request)
                 return redirect(get_auth_url())
-            else:
+            if 'code' in request.GET:
                 drive = create_service(request)
                 write_export_table_data(request, context, si)
 
@@ -148,7 +153,7 @@ def generate_report(request):
 
                 upload_to_gdrive(fileTitle, drive, si)
                 delete_session_keys(request)
-                return render(request, 'inventory/reports/generate_report.html', context)
+            return render(request, 'inventory/reports/generate_report.html', context)
 
     today = date.today()
     weekAgo = today - timedelta(days=7)

@@ -38,3 +38,12 @@ def upload_to_gdrive(fileTitle, driveObj, csvObj):
     bio = io.BytesIO(csvString.encode('utf-8'))
     csvUpload = MediaIoBaseUpload(bio, mimetype='text/csv', resumable=True)
     driveObj.files().create(body=fileMetaData, media_body=csvUpload).execute()
+
+def set_gdrive_message(request, context):
+    if 'error' in request.GET:
+        context['displaySuccessMessage'] = False
+        context['displayErrorMessage'] = True
+    
+    if 'code' in request.GET:
+        context['displayErrorMessage'] = False
+        context['displaySuccessMessage'] = True
