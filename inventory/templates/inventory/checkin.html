@@ -25,6 +25,24 @@
       padding: 1px
     }
 
+    @media (pointer: coarse), (hover: none) {
+    [title] {
+        position: relative;
+        display: inline-flex;
+        justify-content: center;
+      }
+    [title]:focus::after {
+        content: attr(title);
+        position: absolute;
+        top: 90%;
+        color: #000;
+        background-color: #fff;
+        border: 1px solid;
+        width: fit-content;
+        padding: 3px;
+      }
+    }
+
     table, th, td {
       padding: 5px;
     }
@@ -174,18 +192,18 @@
       <table>
         <tr>
           {% load static %}
-          <td><button id="auto-btn1" class="btn btn-warning" href="#" onClick="autoFill('shirt'); return false;"><img src="{% static 'images/shirt_icon.jpg' %}" width="30" height="30"></button></td>
-          <td><button id="auto-btn2" class="btn btn-warning" href="#" onClick="autoFill('pants'); return false;"><img src="{% static 'images/pants.png' %}" width="30" height="30"></button></td>
-          <td><button id="auto-btn3" class="btn btn-warning" href="#" onClick="autoFill('underwear'); return false;"><img src="{% static 'images/underwear.png' %}" width="30" height="30"></button></td>
-          <td><button id="auto-btn4" class="btn btn-warning" href="#" onClick="autoFill('socks'); return false;"><img src="{% static 'images/socks.png' %}" width="30" height="30"></button></td>
-          <td><button id="auto-btn5" class="btn btn-warning" href="#" onClick="autoFill('pj'); return false;"><img src="{% static 'images/pjs.png' %}" width="30" height="30"></button></td>
+          <td><button id="auto-btn1" title="Shirt" tabindex="0" class="btn btn-warning" href="#" onClick="autoFill('shirt'); return false;"><img src="{% static 'images/shirt_icon.jpg' %}" width="30" height="30"></button></td>
+          <td><button id="auto-btn2" title="Pants" tabindex="0" class="btn btn-warning" href="#" onClick="autoFill('pants'); return false;"><img src="{% static 'images/pants.png' %}" width="30" height="30"></button></td>
+          <td><button id="auto-btn3" title="Underwear" tabindex="0" class="btn btn-warning" href="#" onClick="autoFill('underwear'); return false;"><img src="{% static 'images/underwear.png' %}" width="30" height="30"></button></td>
+          <td><button id="auto-btn4" title="Socks" tabindex="0" class="btn btn-warning" href="#" onClick="autoFill('socks'); return false;"><img src="{% static 'images/socks.png' %}" width="30" height="30"></button></td>
+          <td><button id="auto-btn5" title="Pajamas" tabindex="0" class="btn btn-warning" href="#" onClick="autoFill('pj'); return false;"><img src="{% static 'images/pjs.png' %}" width="30" height="30"></button></td>
         </tr>
         <tr>
-          <td><button id="auto-btn6" class="btn btn-warning" href="#" onClick="autoFill('shoes'); return false;"><img src="{% static 'images/shoes.png' %}" width="30" height="30"></button></td>
-          <td><button id="auto-btn7" class="btn btn-warning" href="#" onClick="autoFill('toy'); return false;"><img src="{% static 'images/toys.png' %}" width="30" height="30"></button></td>
-          <td><button id="auto-btn8" class="btn btn-warning" href="#" onClick="autoFill('blanket'); return false;"><img src="{% static 'images/blanket.png' %}" width="30" height="30"></button></td>
-          <td><button id="auto-btn9" class="btn btn-warning" href="#" onClick="autoFill('hygiene kit'); return false;"><img src="{% static 'images/hygiene_kit.png' %}" width="30" height="30"></button></td>
-          <td><button id="auto-btn10" class="btn btn-warning" href="#" onClick="autoFill('stuffed animal'); return false;"><img src="{% static 'images/stuffed_animal.png' %}" width="30" height="30"></button></td>
+          <td><button id="auto-btn6" title="Shoes" tabindex="0" class="btn btn-warning" href="#" onClick="autoFill('shoes'); return false;"><img src="{% static 'images/shoes.png' %}" width="30" height="30"></button></td>
+          <td><button id="auto-btn7" title="Toy" tabindex="0" class="btn btn-warning" href="#" onClick="autoFill('toy'); return false;"><img src="{% static 'images/toys.png' %}" width="30" height="30"></button></td>
+          <td><button id="auto-btn8" title="Blanket" tabindex="0" class="btn btn-warning" href="#" onClick="autoFill('blanket'); return false;"><img src="{% static 'images/blanket.png' %}" width="30" height="30"></button></td>
+          <td><button id="auto-btn9" title="Hygiene Kit" tabindex="0" class="btn btn-warning" href="#" onClick="autoFill('hygiene kit'); return false;"><img src="{% static 'images/hygiene_kit.png' %}" width="30" height="30"></button></td>
+          <td><button id="auto-btn10" title="Stuffed Animal" tabindex="0" class="btn btn-warning" href="#" onClick="autoFill('stuffed animal'); return false;"><img src="{% static 'images/stuffed_animal.png' %}" width="30" height="30"></button></td>
         </tr>
        </table>
        <hr>
