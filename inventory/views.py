@@ -75,8 +75,6 @@ def logout_action(request):
 def generate_report(request):
     context = {}
     refresh_session_keys(request)
-    for key, value in request.session.items():
-        print('{} => {}'.format(key, value))
 
     if ('start-date' in request.POST \
         and 'end-date' in request.POST \
@@ -88,9 +86,7 @@ def generate_report(request):
             set_context_vars_get(request, context)
         else: 
             set_context_vars_post(request, context)
-        
-        print('context: ' + str(context))
-        
+                
         if 'export' in request.POST:
             response = HttpResponse()
             response['Content-Disposition'] = 'attachment; filename=Checkout Report By Item ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
@@ -204,6 +200,7 @@ def write_export_table_data(request, context, csvObj):
 
     if 'itemizedOutput' in request.POST or 'itemizedOutput' in request.session:
         if len(context.get('results', [])) != 0:
+            totalPrice = 0
             headers = list(context['results'][0].keys())
             headers = [x for x in headers if x not in ['tx_notes', 'new_price', 'used_price']]
             headers.append('new/used price')
@@ -218,7 +215,11 @@ def write_export_table_data(request, context, csvObj):
                             row.append(i['used_price'])
                     else:
                         row.append(i[h])
+                        if h == 'value':
+                            totalPrice += i[h]
                 writer.writerow(row)
+            writer.writerow([])
+            writer.writerow(["Total Price: " + str(totalPrice)])
         return csvObj
 
     if len(qs) != 0:
