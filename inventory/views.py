@@ -75,6 +75,8 @@ def logout_action(request):
 def generate_report(request):
     context = {}
     refresh_session_keys(request)
+    for key, value in request.session.items():
+        print('{} => {}'.format(key, value))
 
     if ('start-date' in request.POST \
         and 'end-date' in request.POST \
@@ -87,6 +89,8 @@ def generate_report(request):
         else: 
             set_context_vars_post(request, context)
         
+        print('context: ' + str(context))
+        
         if 'export' in request.POST:
             response = HttpResponse()
             response['Content-Disposition'] = 'attachment; filename=Checkout Report By Item ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
@@ -98,7 +102,7 @@ def generate_report(request):
             si = io.StringIO()
 
             if 'code' not in request.GET:
-                save_session_keys(request)
+                save_session_keys(request, context)
                 return redirect(get_auth_url())
             else:
                 drive = create_service(request)
@@ -135,7 +139,7 @@ def generate_report(request):
             si = io.StringIO()
 
             if 'code' not in request.GET:
-                save_session_keys(request)
+                save_session_keys(request, context)
                 return redirect(get_auth_url())
             else:
                 drive = create_service(request)
@@ -287,15 +291,16 @@ def set_context_vars_get(request, context):
     context['tx'] = request.session['tx-type']
 
     endDatetime = datetime.strptime('{} 23:59:59'.format(context['endDate']), '%Y-%m-%d %H:%M:%S')
-
     if request.session['tx-type'] == 'Checkin':
         context['results'] = Checkin.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
     else:
         context['results'] = Checkout.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
+    
     context['tx_type'] = request.session['tx-type']
 
     if 'itemizedOutput' in request.session:
         context['itemizedOutput'] = request.session['itemizedOutput']
+        context['results'] = request.session['results']
 
     context['totalValue'] = 0 
     for result in context['results']:
@@ -321,7 +326,7 @@ def set_context_vars_post(request, context):
     for result in context['results']:
         context['totalValue'] = result.getValue() + context['totalValue']
 
-def save_session_keys(request):
+def save_session_keys(request, context):
     if 'end-date' in request.POST:
         request.session['end-date'] = request.POST['end-date']
     if 'start-date' in request.POST:
@@ -334,6 +339,8 @@ def save_session_keys(request):
         request.session['export_drive_table'] = request.POST['export_drive_table']
     if 'itemizedOutput' in request.POST:
         request.session['itemizedOutput'] = request.POST['itemizedOutput']
+    if 'results' in context:
+        request.session['results'] = context['results']
 
 def delete_session_keys(request):
     try:
@@ -346,6 +353,8 @@ def delete_session_keys(request):
             del request.session['export_drive_table']
         if 'itemizedOutput' in request.session:
             del request.session['itemizedOutput']
+        if 'results' in request.session:
+            del request.session['results']
     except KeyError:
         pass
 
