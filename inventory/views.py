@@ -73,10 +73,6 @@ def logout_action(request):
 
 @login_required(login_url='login')
 def generate_report(request):
-    print("REQUEST: " + str(request.POST))
-    print("GET REQUEST: " + str(request.GET))
-    for key, value in request.session.items():
-        print('{} => {}'.format(key, value))
     context = {}
 
     if ('start-date' in request.POST \
@@ -94,8 +90,6 @@ def generate_report(request):
         for result in context['results']:
             context['totalValue'] = result.getValue() + context['totalValue']
         
-        print('context: ' + str(context))
-
         if 'export' in request.POST:
             response = HttpResponse()
             response['Content-Disposition'] = 'attachment; filename=Checkout Report By Item ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
@@ -106,7 +100,7 @@ def generate_report(request):
             and 'code' in request.GET):
 
             si = io.StringIO()
-            
+
             if 'code' not in request.GET:
                 save_context_vars(request)
                 auth_url = get_auth_url()
@@ -599,7 +593,6 @@ def checkin_action(request):
             itemInfo = request.session['itemInfo']
             addItemForm.fields['item'].initial = itemInfo[0]
             addItemForm.fields['new_quantity'].initial = itemInfo[1]
-            print("TEST: " + str(itemInfo))
             if (len(itemInfo) >= 3): 
                 addItemForm.fields['used_quantity'].initial = itemInfo[2]
             else:
