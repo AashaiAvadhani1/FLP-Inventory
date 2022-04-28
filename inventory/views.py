@@ -298,13 +298,13 @@ def set_context_vars_get(request, context):
     
     context['tx_type'] = request.session['tx-type']
 
-    if 'itemizedOutput' in request.session:
-        context['itemizedOutput'] = request.session['itemizedOutput']
-        collect_itemized_data(context)
-
     context['totalValue'] = 0 
     for result in context['results']:
         context['totalValue'] = result.getValue() + context['totalValue']
+    
+    if 'itemizedOutput' in request.session:
+        context['itemizedOutput'] = request.session['itemizedOutput']
+        collect_itemized_data(context)
 
 def set_context_vars_post(request, context):
     context['endDate'] = request.POST['end-date']
