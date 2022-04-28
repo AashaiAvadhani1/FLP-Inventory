@@ -1,7 +1,7 @@
 from django import forms
 from django.db.models import Q
 
-from inventory.models import Item, Family, Category, AgeRange
+from inventory.models import Item, Family, Category, AgeRange, ItemTransaction
 
 from django.contrib.auth import authenticate
 from phonenumber_field.formfields import PhoneNumberField
@@ -202,3 +202,42 @@ class CheckOutForm(forms.Form):
         # We must return the cleaned data we got from the cleaned_data
         # dictionary
         return family
+
+class AdminItemOutdateForm(forms.Form):
+    item_old = forms.CharField(max_length=50, required=True,
+                           widget=forms.TextInput(attrs={'class': 'form-control'}))
+    item_new = forms.CharField(max_length=50, required=True,
+                           widget=forms.TextInput(attrs={'class': 'form-control'}))
+    # required_css_class = 'required'
+
+    # Customizes form validation for properties that apply to more
+    # than one field.  Overrides the forms.Form.clean function.
+    def clean(self):
+        # Calls our parent (forms.Form) .clean function, gets a dictionary
+        # of cleaned data as a result
+        cleaned_data = super().clean()
+        
+        # We must return the cleaned data we got from our parent.
+        return cleaned_data
+
+    # Customizes form validation for the name field.
+    def clean_item_old(self):
+        # Confirms that the username is already present in the
+        # Item model database.
+        name = self.cleaned_data.get('item_old')
+        if not Item.objects.filter(name__exact=name):
+            raise forms.ValidationError("Item does not exist.")
+        # We must return the cleaned data we got from the cleaned_data
+        # dictionary
+        return name 
+
+    def clean_item_new(self):
+        # Confirms that the username is already present in the
+        # Item model database.
+        name = self.cleaned_data.get('item_new')
+        if not Item.objects.filter(name__exact=name):
+            raise forms.ValidationError("Item does not exist.")
+        # We must return the cleaned data we got from the cleaned_data
+        # dictionary
+        return name 
+    
