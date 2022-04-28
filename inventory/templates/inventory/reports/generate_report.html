@@ -85,6 +85,18 @@
           </div>
           <br>
         {% endif %}
+
+        {% if displaySuccessMessage %}
+          <script>
+            showSuccessMessage()
+          </script>
+        {% endif %}
+
+        {% if displayErrorMessage %}
+          <script>
+            showErrorMessage()
+          </script>
+        {% endif %} 
         <br>
 
       </div>
