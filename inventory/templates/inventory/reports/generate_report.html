@@ -12,17 +12,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
-<script type="text/javascript">
-  function showSuccessMessage() {
-    alert("Your report has been successfully uploaded to Google Drive!")
-  }
-
-  function showErrorMessage() {
-    alert("Oops. There seems to have been an error attempting to authorize your Google Account")
-  }
-
-</script>
-
 <form class="check-report-form" method="POST" action="{% url 'Report' %}">
 <div class="container">
 
@@ -89,7 +78,7 @@
           <br>
         {% endif %}
 
-        {% if displayErrorMessage %}
+        {% if displaySuccessMessage %}
           <script type='text/javascript'>
               Swal.fire("Success", "Your report has been successfully uploaded to Google Drive!");
           </script>
@@ -97,7 +86,7 @@
 
         {% if displayErrorMessage %}
           <script>
-            showErrorMessage()
+             Swal.fire("Error", "Oops. There seems to have been an error attempting to authorize your Google Account.");
           </script>
         {% endif %} 
         <br>
