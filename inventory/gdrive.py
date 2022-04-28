@@ -9,7 +9,7 @@ from django.shortcuts import redirect
 
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
 CLIENT_SECRET_FILE = 'client_secrets.json'
-REDIRECT_URI = 'http://localhost:8000/report/'
+REDIRECT_URI = 'https://flpinventory.com/report/'
 API_NAME = 'drive'
 API_VERSION = 'v3'
 
