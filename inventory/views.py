@@ -110,7 +110,7 @@ def generate_report(request):
                 
                 fileTitle = context['tx_type'] + ' Report By Item ' + context['startDate'] + " to " + context['endDate'] + '.csv'
                 upload_to_gdrive(fileTitle, drive, si)
-                delete_session_keys(request)
+            delete_session_keys(request)
             return render(request, 'inventory/reports/generate_report.html', context)
 
         if 'itemizedOutput' in request.POST:
@@ -152,7 +152,7 @@ def generate_report(request):
                     fileTitle = context['tx_type'] + ' Report ' + context['startDate'] + " to " + context['endDate'] + '.csv'
 
                 upload_to_gdrive(fileTitle, drive, si)
-                delete_session_keys(request)
+            delete_session_keys(request)
             return render(request, 'inventory/reports/generate_report.html', context)
 
     today = date.today()
