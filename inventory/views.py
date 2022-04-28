@@ -74,6 +74,7 @@ def logout_action(request):
 @login_required(login_url='login')
 def generate_report(request):
     context = {}
+    refresh_session_keys(request)
 
     if ('start-date' in request.POST \
         and 'end-date' in request.POST \
@@ -86,31 +87,26 @@ def generate_report(request):
         else: 
             set_context_vars_post(request, context)
         
-        context['totalValue'] = 0 
-        for result in context['results']:
-            context['totalValue'] = result.getValue() + context['totalValue']
-        
         if 'export' in request.POST:
             response = HttpResponse()
             response['Content-Disposition'] = 'attachment; filename=Checkout Report By Item ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
             return write_export_data(request, context, response)
 
         if 'export_drive' in request.POST \
-            or ('export_drive' in request.session \
-            and 'code' in request.GET):
+            or 'export_drive' in request.session:
 
             si = io.StringIO()
 
             if 'code' not in request.GET:
-                save_context_vars(request)
-                auth_url = get_auth_url()
-                return redirect(auth_url)
+                save_session_keys(request)
+                return redirect(get_auth_url())
             else:
                 drive = create_service(request)
                 write_export_data(request, context, si)
                 
                 fileTitle = context['tx_type'] + ' Report By Item ' + context['startDate'] + " to " + context['endDate'] + '.csv'
                 upload_to_gdrive(fileTitle, drive, si)
+                delete_session_keys(request)
                 return render(request, 'inventory/reports/generate_report.html', context)
 
         if 'itemizedOutput' in request.POST:
@@ -119,7 +115,7 @@ def generate_report(request):
            
         if 'export_table' not in request.POST \
             and 'export_drive_table' not in request.POST \
-            and 'code' not in request.GET:     
+            and 'export_drive_table' not in request.session:     
             context['results'] = getPagination(request, context['results'], DEFAULT_PAGINATION_SIZE)
             return render(request, 'inventory/reports/generate_report.html', context)
 
@@ -134,15 +130,13 @@ def generate_report(request):
             return write_export_table_data(request, context, response)
 
         if 'export_drive_table' in request.POST \
-            or ('export_drive_table' in request.session \
-            and 'code' in request.GET):
+            or 'export_drive_table' in request.session:
 
             si = io.StringIO()
 
             if 'code' not in request.GET:
-                save_context_vars(request)
-                auth_url = get_auth_url()
-                return redirect(auth_url)
+                save_session_keys(request)
+                return redirect(get_auth_url())
             else:
                 drive = create_service(request)
                 write_export_table_data(request, context, si)
@@ -153,7 +147,7 @@ def generate_report(request):
                     fileTitle = context['tx_type'] + ' Report ' + context['startDate'] + " to " + context['endDate'] + '.csv'
 
                 upload_to_gdrive(fileTitle, drive, si)
-
+                delete_session_keys(request)
                 return render(request, 'inventory/reports/generate_report.html', context)
 
     today = date.today()
@@ -300,6 +294,13 @@ def set_context_vars_get(request, context):
         context['results'] = Checkout.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
     context['tx_type'] = request.session['tx-type']
 
+    if 'itemizedOutput' in request.session:
+        context['itemizedOutput'] = request.session['itemizedOutput']
+
+    context['totalValue'] = 0 
+    for result in context['results']:
+        context['totalValue'] = result.getValue() + context['totalValue']
+
 def set_context_vars_post(request, context):
     context['endDate'] = request.POST['end-date']
     context['startDate'] = request.POST['start-date']
@@ -313,7 +314,14 @@ def set_context_vars_post(request, context):
         context['results'] = Checkout.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
     context['tx_type'] = request.POST['tx-type']
 
-def save_context_vars(request):
+    if 'itemizedOutput' in request.POST:
+        context['itemizedOutput'] = request.POST['itemizedOutput']
+
+    context['totalValue'] = 0 
+    for result in context['results']:
+        context['totalValue'] = result.getValue() + context['totalValue']
+
+def save_session_keys(request):
     if 'end-date' in request.POST:
         request.session['end-date'] = request.POST['end-date']
     if 'start-date' in request.POST:
@@ -326,6 +334,27 @@ def save_context_vars(request):
         request.session['export_drive_table'] = request.POST['export_drive_table']
     if 'itemizedOutput' in request.POST:
         request.session['itemizedOutput'] = request.POST['itemizedOutput']
+
+def delete_session_keys(request):
+    try:
+        del request.session['end-date']
+        del request.session['start-date']
+        del request.session['tx-type']
+        if 'export_drive' in request.session:
+            del request.session['export_drive']
+        if 'export_drive_table' in request.session:
+            del request.session['export_drive_table']
+        if 'itemizedOutput' in request.session:
+            del request.session['itemizedOutput']
+    except KeyError:
+        pass
+
+def refresh_session_keys(request):
+    if ('export_drive_table' \
+        or 'export_drive' in request.session) \
+        and 'code' not in request.GET:
+        
+        delete_session_keys(request)
 
 ######################### ANALYTICS #########################
 @login_required

@@ -24,7 +24,7 @@ def create_service(request):
     flow = Flow.from_client_secrets_file(CLIENT_SECRET_FILE, SCOPES)
     flow.redirect_uri = REDIRECT_URI
 
-    flow.fetch_token(code=request.POST['code'])
+    flow.fetch_token(code=request.GET['code'])
     credentials = flow.credentials
     return build(API_NAME, API_VERSION, credentials=credentials)
 
