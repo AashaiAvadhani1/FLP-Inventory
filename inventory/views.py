@@ -75,6 +75,8 @@ def logout_action(request):
 def generate_report(request):
     print("REQUEST: " + str(request.POST))
     print("GET REQUEST: " + str(request.GET))
+    for key, value in request.session.items():
+        print('{} => {}'.format(key, value))
     context = {}
 
     if ('start-date' in request.POST \
@@ -100,9 +102,13 @@ def generate_report(request):
             return write_export_data(request, context, response)
 
         if 'export_drive' in request.POST \
-            or 'export_drive' in request.GET:
+            or ('export_drive' in request.session \
+            and 'code' in request.GET):
+
             si = io.StringIO()
+            
             if 'code' not in request.GET:
+                save_context_vars(request)
                 auth_url = get_auth_url()
                 return redirect(auth_url)
             else:
@@ -119,7 +125,7 @@ def generate_report(request):
            
         if 'export_table' not in request.POST \
             and 'export_drive_table' not in request.POST \
-            and 'export_drive_table' not in request.GET:     
+            and 'code' not in request.GET:     
             context['results'] = getPagination(request, context['results'], DEFAULT_PAGINATION_SIZE)
             return render(request, 'inventory/reports/generate_report.html', context)
 
@@ -134,17 +140,20 @@ def generate_report(request):
             return write_export_table_data(request, context, response)
 
         if 'export_drive_table' in request.POST \
-            or 'export_drive_table' in request.GET:
+            or ('export_drive_table' in request.session \
+            and 'code' in request.GET):
+
             si = io.StringIO()
+
             if 'code' not in request.GET:
-                auth_url = get_auth_url(save_info_string(request))
+                save_context_vars(request)
+                auth_url = get_auth_url()
                 return redirect(auth_url)
             else:
-                print("context: "+ str(context))
                 drive = create_service(request)
                 write_export_table_data(request, context, si)
 
-                if 'itemizedOutput' in request.POST or 'itemizedOutput' in request.GET:
+                if 'itemizedOutput' in request.POST or 'itemizedOutput' in request.session:
                     fileTitle = context['tx_type'] + ' Report By Item ' + context['startDate'] + " to " + context['endDate'] + '.csv'
                 else:
                     fileTitle = context['tx_type'] + ' Report ' + context['startDate'] + " to " + context['endDate'] + '.csv'
@@ -201,7 +210,7 @@ def write_export_table_data(request, context, csvObj):
     qs = context['results']
     writer = csv.writer(csvObj)
 
-    if 'itemizedOutput' in request.POST or 'itemizedOutput' in request.GET:
+    if 'itemizedOutput' in request.POST or 'itemizedOutput' in request.session:
         if len(context.get('results', [])) != 0:
             headers = list(context['results'][0].keys())
             headers = [x for x in headers if x not in ['tx_notes', 'new_price', 'used_price']]
@@ -285,17 +294,17 @@ def write_export_data(request, context, csvObj):
     return csvObj
 
 def set_context_vars_get(request, context):
-    context['endDate'] = request.GET['end-date']
-    context['startDate'] = request.GET['start-date']
-    context['tx'] = request.GET['tx-type']
+    context['endDate'] = request.session['end-date']
+    context['startDate'] = request.session['start-date']
+    context['tx'] = request.session['tx-type']
 
     endDatetime = datetime.strptime('{} 23:59:59'.format(context['endDate']), '%Y-%m-%d %H:%M:%S')
 
-    if request.GET['tx-type'] == 'Checkin':
+    if request.session['tx-type'] == 'Checkin':
         context['results'] = Checkin.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
     else:
         context['results'] = Checkout.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
-    context['tx_type'] = request.GET['tx-type']
+    context['tx_type'] = request.session['tx-type']
 
 def set_context_vars_post(request, context):
     context['endDate'] = request.POST['end-date']
@@ -310,22 +319,19 @@ def set_context_vars_post(request, context):
         context['results'] = Checkout.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
     context['tx_type'] = request.POST['tx-type']
 
-def save_info_string(request):
-    infoString = ''
-    if 'endDate' in request.POST:
-        infoString += 'end-date=' + request.POST['end-date']
-    if 'startDate' in request.POST:
-        infoString += '&start-date=' + request.POST['start-date']
+def save_context_vars(request):
+    if 'end-date' in request.POST:
+        request.session['end-date'] = request.POST['end-date']
+    if 'start-date' in request.POST:
+        request.session['start-date'] = request.POST['start-date']
     if 'tx-type' in request.POST:
-        infoString += '&tx-type=' + request.POST['tx-type']
+        request.session['tx-type'] = request.POST['tx-type']
     if 'export_drive' in request.POST:
-        infoString += '&export_drive=' + request.POST['export_drive']
+        request.session['export_drive'] = request.POST['export_drive']
     if 'export_drive_table' in request.POST:
-        infoString += '&export_drive_table=' + request.POST['export_drive_table']
+        request.session['export_drive_table'] = request.POST['export_drive_table']
     if 'itemizedOutput' in request.POST:
-        infoString += '&itemizedOutput=' + request.POST['itemizedOutput']
-    
-    return infoString
+        request.session['itemizedOutput'] = request.POST['itemizedOutput']
 
 ######################### ANALYTICS #########################
 @login_required

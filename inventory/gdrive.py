@@ -9,20 +9,20 @@ from django.shortcuts import redirect
 
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
 CLIENT_SECRET_FILE = 'client_secrets.json'
-REDIRECT_URI = 'http://localhost:8000/report/?'
+REDIRECT_URI = 'http://localhost:8000/report/'
 API_NAME = 'drive'
 API_VERSION = 'v3'
 
 #requests authorization token from google drive 
-def get_auth_url(infoString):
+def get_auth_url():
     flow = Flow.from_client_secrets_file(CLIENT_SECRET_FILE, SCOPES)
-    flow.redirect_uri = REDIRECT_URI+infoString
+    flow.redirect_uri = REDIRECT_URI
     authorization_url, state = flow.authorization_url(access_type='offline', prompt='select_account', include_granted_scopes='true')
     return authorization_url
 
-def create_service(request, infoString):
+def create_service(request):
     flow = Flow.from_client_secrets_file(CLIENT_SECRET_FILE, SCOPES)
-    flow.redirect_uri = REDIRECT_URI+infoString
+    flow.redirect_uri = REDIRECT_URI
 
     authorization_response = request.build_absolute_uri()
     flow.fetch_token(authorization_response=authorization_response)
