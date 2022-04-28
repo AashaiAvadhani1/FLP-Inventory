@@ -14,8 +14,7 @@ from .tables import FamilyTable, CategoryTable, ItemTable, CheckinTable, Checkou
 from django.contrib import messages
 from django.http import HttpResponse
 
-from inventory.gdrive import gdrive_auth_request, create_service
-from googleapiclient.http import MediaIoBaseUpload
+from inventory.gdrive import get_auth_url, create_service, upload_to_gdrive
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -42,7 +41,6 @@ def home(request):
 def about(request):
 	return render(request, 'inventory/about.html')
 
-#create a new function and template (html template) for the privacy policy page.
 def privacy_policy(request):
     return render(request, 'inventory/policy.html')
 
@@ -77,8 +75,7 @@ def logout_action(request):
 def generate_report(request):
     print("REQUEST: " + str(request.POST))
     print("GET REQUEST: " + str(request.GET))
-    if 'code' not in request.GET:
-        context = {}
+    context = {}
 
     if ('start-date' in request.POST \
         and 'end-date' in request.POST \
@@ -86,38 +83,33 @@ def generate_report(request):
         and (request.POST['tx-type'] in ['Checkin', 'Checkout'])) \
         or 'code' in request.GET:
 
-        if 'code' not in request.GET:
-            context['endDate'] = request.POST['end-date']
-            context['startDate'] = request.POST['start-date']
-            context['tx'] = request.POST['tx-type']
-
-            endDatetime = datetime.strptime('{} 23:59:59'.format(context['endDate']), '%Y-%m-%d %H:%M:%S')
-
-            if request.POST['tx-type'] == 'Checkin':
-                context['results'] = Checkin.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
-            else:
-                context['results'] = Checkout.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
-            context['tx_type'] = request.POST['tx-type']
-
-            context['totalValue'] = 0 
-            for result in context['results']:
-                context['totalValue'] = result.getValue() + context['totalValue']
+        if 'code' in request.GET:
+            set_context_vars_get(request, context)
+        else: 
+            set_context_vars_post(request, context)
+        
+        context['totalValue'] = 0 
+        for result in context['results']:
+            context['totalValue'] = result.getValue() + context['totalValue']
+        
+        print('context: ' + str(context))
 
         if 'export' in request.POST:
             response = HttpResponse()
             response['Content-Disposition'] = 'attachment; filename=Checkout Report By Item ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
             return write_export_data(request, context, response)
 
-        if 'export_drive' in request.POST:
+        if 'export_drive' in request.POST \
+            or 'export_drive' in request.GET:
             si = io.StringIO()
-            if True:
-                print("tomas is fat")
-                gdrive_auth_request()
+            if 'code' not in request.GET:
+                auth_url = get_auth_url()
+                return redirect(auth_url)
             else:
                 drive = create_service(request)
                 write_export_data(request, context, si)
                 
-                fileTitle = context['tx_type'] + ' Report By Item ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
+                fileTitle = context['tx_type'] + ' Report By Item ' + context['startDate'] + " to " + context['endDate'] + '.csv'
                 upload_to_gdrive(fileTitle, drive, si)
                 return render(request, 'inventory/reports/generate_report.html', context)
 
@@ -127,7 +119,7 @@ def generate_report(request):
            
         if 'export_table' not in request.POST \
             and 'export_drive_table' not in request.POST \
-            and 'code' not in request.GET:
+            and 'export_drive_table' not in request.GET:     
             context['results'] = getPagination(request, context['results'], DEFAULT_PAGINATION_SIZE)
             return render(request, 'inventory/reports/generate_report.html', context)
 
@@ -142,20 +134,20 @@ def generate_report(request):
             return write_export_table_data(request, context, response)
 
         if 'export_drive_table' in request.POST \
-            or 'code' in request.GET:
+            or 'export_drive_table' in request.GET:
             si = io.StringIO()
             if 'code' not in request.GET:
-                print("tomas is fat")
-                gdrive_auth_request()
+                auth_url = get_auth_url(save_info_string(request))
+                return redirect(auth_url)
             else:
                 print("context: "+ str(context))
                 drive = create_service(request)
                 write_export_table_data(request, context, si)
 
-                if 'itemizedOutput' in request.POST:
-                    fileTitle = context['tx_type'] + ' Report By Item ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
+                if 'itemizedOutput' in request.POST or 'itemizedOutput' in request.GET:
+                    fileTitle = context['tx_type'] + ' Report By Item ' + context['startDate'] + " to " + context['endDate'] + '.csv'
                 else:
-                    fileTitle = context['tx_type'] + ' Report ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
+                    fileTitle = context['tx_type'] + ' Report ' + context['startDate'] + " to " + context['endDate'] + '.csv'
 
                 upload_to_gdrive(fileTitle, drive, si)
 
@@ -209,7 +201,7 @@ def write_export_table_data(request, context, csvObj):
     qs = context['results']
     writer = csv.writer(csvObj)
 
-    if 'itemizedOutput' in request.POST:
+    if 'itemizedOutput' in request.POST or 'itemizedOutput' in request.GET:
         if len(context.get('results', [])) != 0:
             headers = list(context['results'][0].keys())
             headers = [x for x in headers if x not in ['tx_notes', 'new_price', 'used_price']]
@@ -292,17 +284,48 @@ def write_export_data(request, context, csvObj):
 
     return csvObj
 
-def upload_to_gdrive(fileTitle, driveObj, csvObj):
-    fileMetaData = {
-        'name': fileTitle,
-        'mimeType': 'application/vnd.google-apps.spreadsheet'
-    }
+def set_context_vars_get(request, context):
+    context['endDate'] = request.GET['end-date']
+    context['startDate'] = request.GET['start-date']
+    context['tx'] = request.GET['tx-type']
 
-    csvString = csvObj.getvalue().strip('\r\n')
-    bio = io.BytesIO(csvString.encode('utf-8'))
-    csvUpload = MediaIoBaseUpload(bio, mimetype='text/csv', resumable=True)
-    driveObj.files().create(body=fileMetaData, media_body=csvUpload).execute()
+    endDatetime = datetime.strptime('{} 23:59:59'.format(context['endDate']), '%Y-%m-%d %H:%M:%S')
 
+    if request.GET['tx-type'] == 'Checkin':
+        context['results'] = Checkin.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
+    else:
+        context['results'] = Checkout.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
+    context['tx_type'] = request.GET['tx-type']
+
+def set_context_vars_post(request, context):
+    context['endDate'] = request.POST['end-date']
+    context['startDate'] = request.POST['start-date']
+    context['tx'] = request.POST['tx-type']
+
+    endDatetime = datetime.strptime('{} 23:59:59'.format(context['endDate']), '%Y-%m-%d %H:%M:%S')
+
+    if request.POST['tx-type'] == 'Checkin':
+        context['results'] = Checkin.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
+    else:
+        context['results'] = Checkout.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
+    context['tx_type'] = request.POST['tx-type']
+
+def save_info_string(request):
+    infoString = ''
+    if 'endDate' in request.POST:
+        infoString += 'end-date=' + request.POST['end-date']
+    if 'startDate' in request.POST:
+        infoString += '&start-date=' + request.POST['start-date']
+    if 'tx-type' in request.POST:
+        infoString += '&tx-type=' + request.POST['tx-type']
+    if 'export_drive' in request.POST:
+        infoString += '&export_drive=' + request.POST['export_drive']
+    if 'export_drive_table' in request.POST:
+        infoString += '&export_drive_table=' + request.POST['export_drive_table']
+    if 'itemizedOutput' in request.POST:
+        infoString += '&itemizedOutput=' + request.POST['itemizedOutput']
+    
+    return infoString
 
 ######################### ANALYTICS #########################
 @login_required
@@ -537,7 +560,7 @@ def createItem_action(request, location):
         item.save()
 
         if location == 'in' or location == 'out':
-            request.session["itemInfo"] = (item.name, item.quantity)
+            request.session["itemInfo"] = (item.name, item.quantity, 0)
             messages.success(request, 'Item created')
             return redirect(reverse('Check' + location))
         else:
@@ -570,7 +593,11 @@ def checkin_action(request):
             itemInfo = request.session['itemInfo']
             addItemForm.fields['item'].initial = itemInfo[0]
             addItemForm.fields['new_quantity'].initial = itemInfo[1]
-            addItemForm.fields['used_quantity'].initial = itemInfo[2]
+            print("TEST: " + str(itemInfo))
+            if (len(itemInfo) >= 3): 
+                addItemForm.fields['used_quantity'].initial = itemInfo[2]
+            else:
+                addItemForm.fields['used_quantity'].initial = 0
             del request.session['itemInfo']
 
         context['formadditem'] = addItemForm
@@ -668,7 +695,10 @@ def checkout_action(request):
             itemInfo = request.session['itemInfo']
             addItemForm.fields['item'].initial = itemInfo[0]
             addItemForm.fields['new_quantity'].initial = itemInfo[1]
-            addItemForm.fields['used_quantity'].initial = itemInfo[2]
+            if (len(itemInfo) >= 3): 
+                addItemForm.fields['used_quantity'].initial = itemInfo[2]
+            else:
+                addItemForm.fields['used_quantity'].initial = 0
             del request.session['itemInfo']
 
         return render(request, 'inventory/checkout.html', context)

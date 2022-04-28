@@ -17,50 +17,105 @@
 
 <div>
     <h1 class="text-black parallax-text">Privacy Policy</h1>
+    <hr>
 </div>
 
     <div class="container" style="padding-top: 5vh;">
         <br />
         <p> </p>
         <h2>Accessing user data</h2>
+        <hr>
         <p>
-            FlpInventory.com (is the  is using the Google Drive API to make it easier to store files on Google Drive.
-FlpInventory uses an external API, pydrive (https://pythonhosted.org/PyDrive/) uses Google Drive authentication. Fosterlove is a single client based website for a non-profit organization in Pittsburgh, Pennsylvania that focuses on providing clothing, and other support systems to Fosterkids across the  Pittsburgh region. 
-Your use of Google APIs with FlpInventory is subject to each API’s respective terms of service. See Google APIs Terms of Service.
+            FLPInventory is using the 
+            <a href="https://developers.google.com/drive/api">
+                Google Drive API
+            </a> 
+            to make it easier to store files on Google Drive.
+            FosterLove is a single client based website for a non-profit organization in Pittsburgh, 
+            Pennsylvania that focuses on providing clothing, and other support systems to foster kids across the 
+            Pittsburgh region. Our use of Google APIs with FLPInventory is subject to each API’s respective 
+            terms of service. See 
+            <a href="https://developers.google.com/terms/">
+                Google APIs Terms of Service
+            </a>
+            for more information.
         </p>
         <h2>Accessing user data</h2>
+        <hr>
         <p>
-            FlpInventory accesses Google resources from the machine where you use FlpInventory. Your machine communicates directly with the Google APIs.
-The FLPInventory Application never receives your data or the permission to access your data. The owners of the project can only see anonymized, secure data that belongs to the client only. The website does not collect, or locally store any data on any unauthorized machine. 
-FLPInventory sends users to https://flpinventory.com/ for authorization and does not directly access or collect user data. 
+            FLPInventory accesses Google resources from the device where you use FLPInventory. 
+            Your machine communicates directly with the Google APIs. However, no data from your local machine 
+            is utilized when uploading to your Google Drive. The FLPInventory application never receives your 
+            data or the permission to access your data. The owners of the project can only see anonymous, 
+            aggregated information about usage of tokens obtained through its OAuth client, such as which
+            APIs and endpoints are being used. The website does not collect, or locally store any data on any
+            unauthorized machine. FLPInventory sends users to 
+            <a href="https://accounts.google.com/o/oauth2/auth">
+                Google's Authorization Endpoint
+            </a>
+            for authorization and does not directly access or collect user data. 
         </p>
 
         <h2>Using user data</h2>
+        <hr>
         <p>
-            FLPInventory includes functions that you can execute in order to read or modify your own data (or data shared with you). This can only happen after the google authentication process (Google OAuth), which requires that you authenticate yourself as a specific user prior to accessing the google drive functionality on the flpinventory application. 
-            FlpInventory can help you get a token by guiding you through the OAuth flow in the browser. There is no instance where the FLPInventory will automatically manipulate data or have an automated workflow. The user has full control of the data and the OAuth content screen shows which user is logged into the account. There is only 1 set email that is authorized for the google drive (flpinventory.com) The OAuth consent screen will describe the scope of what is being authorized e.g. it will name the target API(s) and whether you are authorizing “read only” or “read and write” access.
-            There are two ways to use FLPInventory with Google Drive without authorizing the FLPInventory Application: bring your own service account token or configure the package to use an OAuth client of your choice.
+            FLPInventory includes functions that you can execute in order to upload server-stored data - 
+            FLPInventory does not upload any data from your local machine. This can only happen after FLPInventory
+            collects an authorization token, which is collected after you authenticate yourself as a specific
+            Google user and authorize FLPInventory. The OAuth consent screen will describe the scope of what
+            is being authorized. For FLPInventory, this authorization will only allow FLPInventory to
+            view and manage Google Drive files and folders that you have opened or created with this app.
+            There is no instance where the FLPInventory will automatically manipulate data or have an automated
+            workflow. The user has full control of the data and the OAuth consent screen shows which user is 
+            logged into the account. 
         </p>
         <h2>Scopes</h2>
+        <hr>
         <p>
-            flpinventory.gmail.com scope (view your email address) are required to be used by Google Auth.
-            FLPInventory allows you to manage the single client (flpinventory.gmail.com) drive functionality including drive (read/write access to your Google Drive). There is only one client working for the application at the moment which is the flpinventory@gmail.com.
+            FLPInventory utilizes 
+            <code style="background: rgb(255, 255, 255) !important;">
+                https://www.googleapis.com/auth/drive.file 
+            </code>
+            Scope from the Google Drive API v3 Scopes. 
+            This allows FLPInventory to view and manage Google Drive files and 
+            folders that you have opened or created with this app. See 
+            <a href=https://developers.google.com/identity/protocols/oauth2/scopes">
+                Google's Scopes for OAuth 2.0
+            </a> 
+            for more information.
         </p>
         <h2>Sharing User Data</h2>
+        <hr>
         <p>
-            FLPInventory only communicates with Google APIs. No user data is shared with the owners of the FLPInventory or any other party.
+            FLPInventory only communicates with Google APIs. No user data is shared with the owners of the 
+            FLPInventory or any other party.
         </p>
         <h2>Storing User Data</h2> 
+        <hr>
         <p>
-            Dont store any user data
+            FLPInventory only stores access tokens and refresh tokens from Google Drive API until they expire.
+            They are then deleted or replaced shortly thereafter. See
+            <a href="https://developers.google.com/identity/protocols/oauth2"> 
+                Using OAuth 2.0 to Access Google APIs
+            </a>
+            for more information on access and refresh tokens using Google APIs with OAuth 2.0.
         </p>
         <h2>Usage in other packages or Applications</h2>
+        <hr>
         <p>
-            Do not use an API key or client ID from the FLPInventory Application in an external package or tool. Per the Google User Data Policy, your application must accurately represent itself when authenticating to Google API services.
+            Do not use an API Key or Client ID from the FLPInventory application in an external package or tool.
+            See
+            <a href="https://developers.google.com/terms/api-services-user-data-policy">
+                Google API Services User Data Policy
+            </a> for more information.
         </p>
         <h2>Acknowledgements</h2>
+        <hr>
         <p>
-            Do not use an API key or client ID from the FLPInventory Application in an external package or tool. Per the Google User Data Policy, your application must accurately represent itself when authenticating to Google API services.
+            This document is based on Tidyverse's
+            <a href="https://www.tidyverse.org/google_privacy_policy/">
+                Privacy policy for packages that access Google APIs
+            </a>.
         </p>
         
         <div class="about-spacer"></div>
