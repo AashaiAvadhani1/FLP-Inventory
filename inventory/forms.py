@@ -239,5 +239,25 @@ class AdminItemOutdateForm(forms.Form):
             raise forms.ValidationError("Item does not exist.")
         # We must return the cleaned data we got from the cleaned_data
         # dictionary
-        return name 
+        return name
+    
+    def run(self):
+        old_name = self.cleaned_data.get('item_old')
+        new_name = self.cleaned_data.get('item_new')
+        old_item = Item.objects.get(name = old_name)
+        new_item = Item.objects.get(name = new_name)
+        assert(old_item.outdated == False)
+        assert(new_item.outdated == False)
+        
+        new_item.quantity = new_item.quantity + old_item.quantity
+        new_item.save()
+        
+        for ins in ItemTransaction.objects.all():
+            if ins.item_id == old_item.id:
+                ins.item_id = new_item.id
+                ins.save()
+        
+        old_item.outdated = True
+        old_item.save()
+        
     

@@ -10,6 +10,7 @@
       </p>
       {{ form.non_field_errors }}
     {% endif %}
+
     <fieldset class="module aligned">
       {% for field in form %}
         <div class="form-row">
@@ -24,6 +25,7 @@
         </div>
       {% endfor %}
     </fieldset>
+    
     <div class="submit-row">
       <input type="submit" class="default" value="submit">
     </div>
