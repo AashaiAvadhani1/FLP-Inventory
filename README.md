@@ -70,9 +70,9 @@ You will follow these directions if there is no EC2 instance created with a dock
 
 * Make sure in `deploy`, you have the `db.sqlite3`, `env` files from the Google Drive. Furthermore, add the `client_secrets.json` file for Exporting to Google Drive functionality in the root directory (`/home/ec2-user/github`) of where the repository is stored.
 
-* If you wish to start with a custom or new databse, you can follow this step instead of adding the `db.sqlite3` file as described in the above step. Run the `docker-compose exec /bin/bash` to access the docker container. Then run, `python manage.py drop` then `python manage.py import MANAGE_INVENTORY_FILE MANAGE_ITEMS_FILE` (there are examples of these in the google drive)
+* If you wish to start with a custom or new databse, you can follow this step instead of adding the `db.sqlite3` file as described in the above step. Run the `docker-compose exec django /bin/bash` to access the docker container. Then run, `python manage.py drop` then `python manage.py import MANAGE_INVENTORY_FILE MANAGE_ITEMS_FILE` (there are examples of these in the google drive)
 
-* Run `email_backups.py &` within the docker container (`docker-compose exec /bin/bash` needs to be run beforehand) to send database backup emails weekly.
+* Run `email_backups.py &` within the docker container (`docker-compose exec django /bin/bash` needs to be run beforehand) to send database backup emails weekly.
 
 * Make starter staff superuser and volunteer account by using the commands listed above (in the Admin section) within the docker container.
 
@@ -109,7 +109,7 @@ To restart an already-running server, you should run:
 
 To access the docker container directly (useful for seeing paths and if files are being added to the docker container through .dockerignore):
 
-	$ docker-compose exec /bin/bash
+	$ docker-compose exec django /bin/bash
 
 To check on the state of the server via its logs, you can run:
 
