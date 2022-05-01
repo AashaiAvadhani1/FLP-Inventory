@@ -5,7 +5,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseUpload
 
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
-CLIENT_SECRET_FILE = 'client_secrets.json'
+CLIENT_SECRET_FILE = 'client_secrets.json'  # noqa: B105
 REDIRECT_URI = 'https://flpinventory.com/report/'
 API_NAME = 'drive'
 API_VERSION = 'v3'
