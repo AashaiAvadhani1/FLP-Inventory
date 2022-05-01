@@ -83,7 +83,8 @@ def generate_report(request):
         or 'code' in request.GET \
         or 'error' in request.GET:
 
-        if 'code' in request.GET:
+        if 'code' in request.GET \
+            or 'error' in request.GET:
             set_context_vars_get(request, context)
         else: 
             set_context_vars_post(request, context)
@@ -363,9 +364,10 @@ def delete_session_keys(request):
         pass
 
 def refresh_session_keys(request):
-    if ('export_drive_table' \
+    if ('export_drive_table' in request.session \
         or 'export_drive' in request.session) \
-        and 'code' not in request.GET:
+        and 'code' not in request.GET \
+        and 'error' not in request.GET:
         
         delete_session_keys(request)
 

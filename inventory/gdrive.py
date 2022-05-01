@@ -1,11 +1,8 @@
-import pickle
-import os
 import io
 
 from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseUpload
-from django.shortcuts import redirect
 
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
 CLIENT_SECRET_FILE = 'client_secrets.json'
