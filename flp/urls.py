@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="Home"),
     path('autocomplete_item/', views.autocomplete_item, name="autocomplete_item"),
+    path('autocomplete_item_category/', views.autocomplete_item_category, name="autocomplete_item_category"),
     path('autocomplete_family/', views.autocomplete_family, name="autocomplete_family"),
     path('about/', views.about, name="About"),  
     path('PrivacyPolicy/', views.privacy_policy, name="PrivacyPolicy"),  

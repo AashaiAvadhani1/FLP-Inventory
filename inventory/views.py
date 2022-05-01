@@ -832,6 +832,14 @@ def autocomplete_item(request):
         for item in qs:
             names.append(item.name)
         return JsonResponse(names, safe=False)
+
+def autocomplete_item_category(request):
+    if 'term' in request.GET:
+        qs = Item.objects.filter(category__exact=request.GET.get('term'), outdated = False)
+        names = list()
+        for item in qs:
+            names.append(item.name)
+        return JsonResponse(names, safe=False)
   
 def autocomplete_family(request):
     if 'term' in request.GET:

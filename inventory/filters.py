@@ -13,4 +13,4 @@ class ItemFilter(django_filters.FilterSet):
 
     class Meta:
         model = Item
-        fields = ['name']
+        fields = ['name', 'category']
