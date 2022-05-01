@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from inventory.models import *
+from inventory.models import User, Family, Checkin, Checkout, Category, Item, ItemTransaction
 from django.utils.dateparse import parse_datetime
 import csv, os
 import sqlite3

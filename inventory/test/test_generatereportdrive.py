@@ -7,7 +7,6 @@ from datetime import date, timedelta
 from unittest.mock import patch
 
 from google_auth_oauthlib.flow import Flow
-from inventory.gdrive import upload_to_gdrive
 
 class GenerateReportDriveTestCase(TestCase):
     def setUp(self):
