@@ -35,17 +35,21 @@ LOW_QUANTITY_THRESHOLD = 10 # this number or below is considered low quantity
 
 ######################### BASIC VIEWS #########################
 
+# Handles home page render
 def home(request): 
 	return render(request, 'inventory/home.html')
 
+# Handles about page render
 def about(request):
 	return render(request, 'inventory/about.html')
 
+# Handles privacy policy page render
 def privacy_policy(request):
     return render(request, 'inventory/policy.html')
 
 ######################### AUTH VIEWS ##########################
 
+# Handles login
 def login_action(request):
     context = {}
 
@@ -65,12 +69,14 @@ def login_action(request):
     login(request, new_user)
     return redirect(reverse('Home'))
 
+# Handles logout
 def logout_action(request):
     logout(request)
     return redirect(reverse('Login'))
 
 ######################### REPORT GENERATION #########################
 
+# Handles generate report page
 @login_required(login_url='login')
 def generate_report(request):
     context = {}
@@ -162,6 +168,7 @@ def generate_report(request):
     context['startDate'] = weekAgo.strftime('%Y-%m-%d')
     return render(request, 'inventory/reports/generate_report.html', context)
 
+# Collects itemized data upon report generation if grouped by item
 def collect_itemized_data(context):
     newUniqueItems = {}
     for res in context['results']: 
@@ -200,6 +207,7 @@ def collect_itemized_data(context):
                 
     context['results'] = list(sorted(newUniqueItems.values(), key=lambda x: (x['item'], "New" if x['is_new'] else "Used")))
 
+# Writes data for checkout, checkin, and checkin group by item
 def write_export_table_data(request, context, csvObj):
     qs = context['results']
     writer = csv.writer(csvObj)
@@ -225,7 +233,7 @@ def write_export_table_data(request, context, csvObj):
                             totalPrice += i[h]
                 writer.writerow(row)
             writer.writerow([])
-            writer.writerow(["Total Price: " + str(totalPrice)])
+            writer.writerow(["Total Value:", "", "", "", "", str(totalPrice)])
         return csvObj
 
     if len(qs) != 0:
@@ -245,9 +253,14 @@ def write_export_table_data(request, context, csvObj):
                     row.append(getattr(i, f))
             writer.writerow(row)
         writer.writerow([])
-        writer.writerow(["Total Price: " + str(totalPrice)])
+        if context["tx_type"] == "Checkout":
+            writer.writerow(["Total Value:", "", "", "", "", "", "", "", str(totalPrice)])
+        else:
+            print("here")
+            writer.writerow(["Total Value:", "", "", "", "", str(totalPrice)])
     return csvObj
 
+# Writes data for checkout group by item
 def write_export_data(request, context, csvObj):
     endDatetime = datetime.strptime('{} 23:59:59'.format(context['endDate']), '%Y-%m-%d %H:%M:%S')
     qs = Checkout.objects.filter(datetime__gte=context['startDate']).filter(datetime__lte=endDatetime).all()
@@ -288,10 +301,11 @@ def write_export_data(request, context, csvObj):
         for item in sorted_items:
             writer.writerow(item)
         writer.writerow([])
-        writer.writerow(["Total Price: " + str(totalPrice)])
+        writer.writerow(["Total Value:", "", "", "", "", str(totalPrice)])
 
     return csvObj
 
+# Sets the context variables when a request from Google Auth is received
 def set_context_vars_get(request, context):
     context['endDate'] = request.session['end-date']
     context['startDate'] = request.session['start-date']
@@ -313,6 +327,7 @@ def set_context_vars_get(request, context):
         context['itemizedOutput'] = request.session['itemizedOutput']
         collect_itemized_data(context)
 
+# Sets the context variables in any other case but Google Auth requests
 def set_context_vars_post(request, context):
     context['endDate'] = request.POST['end-date']
     context['startDate'] = request.POST['start-date']
@@ -333,6 +348,7 @@ def set_context_vars_post(request, context):
     for result in context['results']:
         context['totalValue'] = result.getValue() + context['totalValue']
 
+# Saves request.POST vars as session keys for Google Auth redirect
 def save_session_keys(request):
     if 'end-date' in request.POST:
         request.session['end-date'] = request.POST['end-date']
@@ -347,6 +363,7 @@ def save_session_keys(request):
     if 'itemizedOutput' in request.POST:
         request.session['itemizedOutput'] = request.POST['itemizedOutput']
 
+# Deletes session keys when Google Auth request is finished being handled
 def delete_session_keys(request):
     try:
         del request.session['end-date']
@@ -363,6 +380,7 @@ def delete_session_keys(request):
     except KeyError:
         pass
 
+# Refreshes session keys so old variables do not affect new reports
 def refresh_session_keys(request):
     if ('export_drive_table' in request.session \
         or 'export_drive' in request.session) \
@@ -372,7 +390,9 @@ def refresh_session_keys(request):
         delete_session_keys(request)
 
 ######################### ANALYTICS #########################
-@login_required
+
+# Handles analytics page
+@login_required(login_url='login')
 def analytics(request):
     context = {}
 
@@ -503,8 +523,8 @@ def analytics(request):
 
     return render(request, 'inventory/analytics/analytics.html', context)
 
-  
 ###################### CHECKIN/CHECKOUT VIEWS ######################
+
 # Remove item from cart
 def removeitem_action(request, index, location):
     saved_list = request.session['transactions-' + location]
@@ -514,7 +534,7 @@ def removeitem_action(request, index, location):
 
     return redirect(reverse('Check' + location))
 
-
+# Edit Quantity in Checkout/in Dropdown
 def editquantity_action(request, index, location, qty):
     saved_list = request.session['transactions-' + location]
     curr_item = json.loads(saved_list[index])
@@ -528,6 +548,7 @@ def editquantity_action(request, index, location, qty):
 
     return redirect(reverse('Check' + location))  
 
+# Edit Used/New Status in Checkout/in Dropdown
 def editisnew_action(request, index, location, isnew):
     saved_list = request.session['transactions-' + location]
     curr_item = json.loads(saved_list[index])
@@ -826,7 +847,8 @@ def checkout_action(request):
 
         messages.success(request, 'Checkout created.')
         return redirect(reverse('Checkout'))
-  
+
+# Autocompletes item name 
 def autocomplete_item(request):
     if 'term' in request.GET:
         qs = Item.objects.filter(name__icontains=request.GET.get('term'), outdated = False)
@@ -834,7 +856,8 @@ def autocomplete_item(request):
         for item in qs:
             names.append(item.name)
         return JsonResponse(names, safe=False)
-  
+
+# Autocompletes family name  
 def autocomplete_family(request):
     if 'term' in request.GET:
         qs = Family.objects.filter(Q(displayName__icontains=request.GET.get('term')) )
@@ -845,27 +868,32 @@ def autocomplete_family(request):
   
 ######################### DATABASE VIEWS #########################
 
+# View family data
 class FamilyIndexView(LoginRequiredMixin, SingleTableView):
     model = Family
     table_class = FamilyTable
     template_name = "inventory/families/index.html"
 
+# View category data
 class CategoryIndexView(LoginRequiredMixin, SingleTableView):
     model = Category
     table_class = CategoryTable
     template_name = "inventory/categories/index.html"
 
+# View item data
 class ItemIndexView(LoginRequiredMixin, SingleTableMixin, FilterView):
     model = Item
     table_class = ItemTable
     template_name = "inventory/items/index.html"
     filterset_class = ItemFilter
 
+# View checkin data
 class CheckinIndexView(LoginRequiredMixin, SingleTableView):
     model = Checkin
     table_class = CheckinTable
     template_name = "inventory/checkins/index.html"
 
+# View checkout data
 class CheckoutIndexView(LoginRequiredMixin, SingleTableMixin, FilterView):
     model = Checkout
     table_class = CheckoutTable
@@ -875,6 +903,7 @@ class CheckoutIndexView(LoginRequiredMixin, SingleTableMixin, FilterView):
 
 ######################### VIEW HELPERS #########################
 
+# Pagination handler
 def getPagination(request, objects, count):
     page = request.POST.get('page', 1)
     paginator = Paginator(objects, count)
