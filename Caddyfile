@@ -17,3 +17,8 @@ flpinventory.com {
   import tls-cloudflare
   reverse_proxy http://django:8000
 }
+
+www.flpinventory.com {
+  import tls-cloudflare
+  reverse_proxy http://django:8000
+}
