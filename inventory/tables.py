@@ -31,7 +31,7 @@ class ItemTable(NameTable):
     class Meta:
         model = Item
         template_name = "django_tables2/bootstrap.html"
-        fields = ("id", "name", "category", "new_price", "used_price", "quantity", )
+        fields = ("id", "name", "category", "new_price", "used_price", "quantity", "outdated")
         order_by = 'name'
 
 class CheckinTable(tables.Table):   
