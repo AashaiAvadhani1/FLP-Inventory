@@ -857,7 +857,6 @@ def autocomplete_item(request):
             names.append(item.name)
         return JsonResponse(names, safe=False)
 
-<<<<<<< HEAD
 def autocomplete_item_category(request):
     if 'term' in request.GET:
         qs = Item.objects.filter(category__name__icontains=request.GET.get('term'), outdated = False)
@@ -866,9 +865,6 @@ def autocomplete_item_category(request):
             names.append(item.name)
         return JsonResponse(names, safe=False)
   
-=======
-# Autocompletes family name  
->>>>>>> origin/master
 def autocomplete_family(request):
     if 'term' in request.GET:
         qs = Family.objects.filter(Q(displayName__icontains=request.GET.get('term')) )
