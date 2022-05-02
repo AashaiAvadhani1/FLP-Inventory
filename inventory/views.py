@@ -835,7 +835,7 @@ def autocomplete_item(request):
 
 def autocomplete_item_category(request):
     if 'term' in request.GET:
-        qs = Item.objects.filter(category__exact=request.GET.get('term'), outdated = False)
+        qs = Item.objects.filter(category__name__icontains=request.GET.get('term'), outdated = False)
         names = list()
         for item in qs:
             names.append(item.name)

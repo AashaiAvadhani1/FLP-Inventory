@@ -10,6 +10,7 @@ class CheckoutFilter(django_filters.FilterSet):
 
 class ItemFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr='icontains')
+    category = django_filters.CharFilter(lookup_expr='icontains')
 
     class Meta:
         model = Item
