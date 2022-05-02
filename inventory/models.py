@@ -1,6 +1,3 @@
-
-# IMPORTS 
-
 from django.db import models
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
@@ -14,8 +11,6 @@ class Family(models.Model):
   lname = models.CharField(max_length=50, blank=False, null=False,verbose_name='Last Name') # Only the last_name is required
   phone = PhoneNumberField(blank=True, null=True)
   displayName = models.CharField(max_length=150, blank=True, null=True, verbose_name='Family name and phone')
-  # created_at = models.DateTimeField(default=timezone.now)
-  # USE Family.child_set OR .children TO GET QuerySet<Child>
   
   def __str__(self):
     if self.fname: 
