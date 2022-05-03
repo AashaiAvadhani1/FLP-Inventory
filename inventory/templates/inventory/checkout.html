@@ -294,41 +294,52 @@
       $("#id_family").val(function () {
         return localStorage.getItem("family");
       });
+
       $("#id_family").on("change", function () {
         localStorage.setItem("family", $(this).val());
       });
+
       $("#id_family").on("click", function () {
         $(this).val("");
       });
-      $("#id_child").val(function () {
-        return localStorage.getItem("child");
-      });
-      $("#id_child").on("change", function () {
-        localStorage.setItem("child", $(this).val());
-      });
-      $("#id_child").on("click", function () {
-        $(this).val("");
-      });
-      $("#id_age").val(function () {
-        return localStorage.getItem("age");
-      });
-      $("#id_age").on("change", function () {
-        localStorage.setItem("age", $(this).val());
-      });
+
       $("#id_family").autocomplete({
         source: '{% url "autocomplete_family" %}',
         minLength: 2
       });
+
+      $("#id_child").val(function () {
+        return localStorage.getItem("child");
+      });
+
+      $("#id_child").on("change", function () {
+        localStorage.setItem("child", $(this).val());
+      });
+
+      $("#id_child").on("click", function () {
+        $(this).val("");
+      });
+
+      $("#id_age").val(function () {
+        return localStorage.getItem("age");
+      });
+
+      $("#id_age").on("change", function () {
+        localStorage.setItem("age", $(this).val());
+      });
+
       $("#checkout-btn").on('click', function(){
         localStorage.removeItem("family")
       });
-      $("#auto-btn1, #auto-btn2, #auto-btn3, #auto-btn4, #auto-btn5, #auto-btn6, #auto-btn7, #auto-btn8, #auto-btn9, #auto-btn10, auto-btn12").on('click', function(){
+
+      $("#auto-btn1, #auto-btn2, #auto-btn3, #auto-btn4, #auto-btn5, #auto-btn6, #auto-btn7, #auto-btn8, #auto-btn9, #auto-btn10, #auto-btn12").on('click', function(){
         $("#id_item").autocomplete({
           source: '{% url "autocomplete_item" %}',
           minLength: 2
         });
         $("#id_item").autocomplete('search', $("#id_item").val())
       });
+
       $("#auto-btn11").on('click', function(){
         $("#id_item").autocomplete({
           source: '{% url "autocomplete_item_category" %}',
@@ -336,9 +347,13 @@
         });
         $("#id_item").autocomplete('search', $("#id_item").val())
       });
-      $("#id_item").autocomplete({
-        source: '{% url "autocomplete_item" %}',
-        minLength: 2
+
+      $("#id_item").on('input', function(){
+        $("#id_item").autocomplete({
+    		  source: '{% url "autocomplete_item" %}',
+    		  minLength: 2
+    	  });
+        $("#id_item").autocomplete('search', $("#id_item").val())
       });
     })
   </script>
