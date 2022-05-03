@@ -204,9 +204,9 @@ class CheckOutForm(forms.Form):
         return family
 
 class AdminItemOutdateForm(forms.Form):
-    item_old = forms.CharField(max_length=50, required=True,
+    Old_item = forms.CharField(max_length=50, required=True,
                            widget=forms.TextInput(attrs={'class': 'form-control'}))
-    item_new = forms.CharField(max_length=50, required=True,
+    New_item = forms.CharField(max_length=50, required=True,
                            widget=forms.TextInput(attrs={'class': 'form-control'}))
     # required_css_class = 'required'
 
@@ -221,22 +221,22 @@ class AdminItemOutdateForm(forms.Form):
         return cleaned_data
 
     # Customizes form validation for the name field.
-    def clean_item_old(self):
+    def clean_Old_item(self):
         # Confirms that the username is already present in the
         # Item model database.
-        name = self.cleaned_data.get('item_old')
+        name = self.cleaned_data.get('Old_item')
         if not Item.objects.filter(name__exact=name):
-            raise forms.ValidationError("Item does not exist.")
+            raise forms.ValidationError("This Old Item does not exist.")
         if not Item.objects.filter(name__exact=name, outdated__exact=False):
             raise forms.ValidationError("Item must not be outdated.")
         # We must return the cleaned data we got from the cleaned_data
         # dictionary
         return name 
 
-    def clean_item_new(self):
+    def clean_New_item(self):
         # Confirms that the username is already present in the
         # Item model database.
-        name = self.cleaned_data.get('item_new')
+        name = self.cleaned_data.get('New_item')
         if not Item.objects.filter(name__exact=name):
             raise forms.ValidationError("Item does not exist.")
         if not Item.objects.filter(name__exact=name, outdated__exact=False):
@@ -247,8 +247,8 @@ class AdminItemOutdateForm(forms.Form):
     
     def run(self):
         self.clean()
-        old_name = self.cleaned_data.get('item_old')
-        new_name = self.cleaned_data.get('item_new')
+        old_name = self.cleaned_data.get('Old_item')
+        new_name = self.cleaned_data.get('New_item')
         old_item = Item.objects.get(name = old_name)
         new_item = Item.objects.get(name = new_name)
         if old_item.quantity > 0:   
