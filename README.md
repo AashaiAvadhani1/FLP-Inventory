@@ -59,7 +59,7 @@ This allows us to keep all your project dependencies (or `pip modules`) in isola
 	* Destroys all objects 
 
 ###### Static
-* `python manage.py collectstatic
+* `python manage.py collectstatic`
 	* Updates static items i.e. if any images or CSS files are added 
 	* Needs to be run to access new static resources
 
