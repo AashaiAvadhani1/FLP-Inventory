@@ -82,6 +82,7 @@ def generate_report(request):
     context = {}
     refresh_session_keys(request)
 
+    # If Generate Report Form was filled, it enters
     if ('start-date' in request.POST \
         and 'end-date' in request.POST \
         and 'tx-type' in request.POST \
@@ -97,16 +98,20 @@ def generate_report(request):
         
         set_gdrive_message(request, context)
                 
+        # Checkout Group By Item (Export to Device)        
         if 'export' in request.POST:
             response = HttpResponse()
             response['Content-Disposition'] = 'attachment; filename=Checkout Report By Item ' + request.POST['start-date'] + " to " + request.POST['end-date'] + '.csv'
             return write_export_data(request, context, response)
 
+        # Checkout Group By Item (Export to GDrive)        
         if 'export_drive' in request.POST \
             or 'export_drive' in request.session:
 
             si = io.StringIO()
 
+            # If original POST Req, redirect to GAuth
+            # If successful GET REQ from GAuth, write data & upload
             if 'code' not in request.GET \
                 and 'error' not in request.GET:
                 save_session_keys(request)
@@ -120,16 +125,19 @@ def generate_report(request):
             delete_session_keys(request)
             return render(request, 'inventory/reports/generate_report.html', context)
 
+        # If Group by Item selected when clicking 'Generate'
         if 'itemizedOutput' in request.POST:
             context['itemizedOutput'] = request.POST['itemizedOutput']
             collect_itemized_data(context)
-           
+
+        # If not exported, then simply re-render page with new info   
         if 'export_table' not in request.POST \
             and 'export_drive_table' not in request.POST \
             and 'export_drive_table' not in request.session:     
             context['results'] = getPagination(request, context['results'], DEFAULT_PAGINATION_SIZE)
             return render(request, 'inventory/reports/generate_report.html', context)
 
+        # If checkout, checkin, or checkin group by item (Export to Device)
         if 'export_table' in request.POST:
             response = HttpResponse()
 
@@ -140,6 +148,7 @@ def generate_report(request):
 
             return write_export_table_data(request, context, response)
 
+        # If checkout, checkin, or checkin group by item (Export to GDrive)
         if 'export_drive_table' in request.POST \
             or 'export_drive_table' in request.session:
 
@@ -162,6 +171,7 @@ def generate_report(request):
             delete_session_keys(request)
             return render(request, 'inventory/reports/generate_report.html', context)
 
+    # Generate w/ no Group By Item, then render
     today = date.today()
     weekAgo = today - timedelta(days=7)
     context['endDate'] = today.strftime('%Y-%m-%d')
