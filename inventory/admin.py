@@ -23,7 +23,6 @@ admin.site.register(Category, CategoryAdmin)
 
 class ItemAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'category', 'quantity', 'new_price', 'used_price', 'outdated', 'item_actions', )
-    # def item_actions(self, obj):
         
     def get_urls(self):
         urls = super().get_urls()
@@ -70,11 +69,8 @@ class ItemAdmin(admin.ModelAdmin):
             form = action_form(request.POST)
             if form.is_valid():
                 try:
-                    # form.save(item, request.user)
                     form.run()
                 except Exception:
-                    # If save() raised, the form will a have a non
-                    # field error containing an informative message.
                     pass
             else:
                 self.message_user(request, 'Success')
