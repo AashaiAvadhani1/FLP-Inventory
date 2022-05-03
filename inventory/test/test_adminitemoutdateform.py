@@ -1,8 +1,7 @@
-from unicodedata import name
 from django.test import TestCase
 
 from inventory.forms import AdminItemOutdateForm
-from inventory.models import Item, ItemTransaction
+from inventory.models import Item
 
 class AddItemFormTestCase(TestCase):
     def setUp(self):
