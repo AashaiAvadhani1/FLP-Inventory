@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
 from django.conf.urls import url
+from django.shortcuts import redirect
 # Register your models here.
 
 from .models import Family, Category, Item, ItemTransaction, Checkin, Checkout, AgeRange
@@ -59,34 +60,28 @@ class ItemAdmin(admin.ModelAdmin):
         action_title
     ):
         item = self.get_object(request, item_id)
-        print(str(item))
-        print(str(self))
-        print(str(request))
         if request.method != 'POST':
             form = action_form()
         else:
-            
             form = action_form(request.POST)
             if form.is_valid():
-                try:
+                # try:
                     form.run()
-                except Exception:
-                    pass
-            else:
-                self.message_user(request, 'Success')
-                url = reverse(
-                    'admin:item',
-                    args=[item.pk],
-                    current_app=self.admin_site.name,
-                )
-                return HttpResponseRedirect(url)
+                    # self.message_user(request, 'Success')
+                    # url = reverse(
+                    #     'admin:item-outdate',
+                    #     args=[item.pk],
+                    #     current_app=self.admin_site.name,
+                    # )
+                    self.message_user(request, 'Success')
+                    return HttpResponseRedirect('/admin/inventory/item/')
+                # except Exception:
+                #     print(str(Exception))
         context = self.admin_site.each_context(request)
         context['opts'] = self.model._meta
         context['form'] = form
         context['item'] = item
         context['title'] = action_title
-        print(str(request.POST))
-        print(str(context['item']))
         return TemplateResponse(
             request,
             'inventory/admin/item/outdate_action.html',
