@@ -56,6 +56,16 @@ This allows us to keep all your project dependencies (or `pip modules`) in isola
 * `python manage.py drop`
 	* Destroys all objects 
 
+###### Outdate-mapping
+Use only when all of below is true:
+* database is constructed using "import" command, with provided MANAGE_INVENTORY_FILE and MANAGE_ITEMS_FILE in google drive.
+* item table in database include an "outdated" column.
+for only recognizable item names that are outdated, mark them as outdated and merge quantity of them into new items.  
+Some examples of recognizable names are: jacket (kid boy), pajamas/pj's (baby girl), girl accessories 0-6 mo
+* `python manage.py trans`
+	*  Mark certain items as outdated
+	*  Add quantity of the outdated items to mapped items 
+
 ### Test Suite 
 
 * Run the suite with `./manage.py test`
