@@ -251,8 +251,6 @@ class AdminItemOutdateForm(forms.Form):
         new_name = self.cleaned_data.get('item_new')
         old_item = Item.objects.get(name = old_name)
         new_item = Item.objects.get(name = new_name)
-        assert(old_item.outdated == False)
-        assert(new_item.outdated == False)
         if old_item.quantity > 0:   
             new_item.quantity = new_item.quantity + old_item.quantity
         new_item.save()
