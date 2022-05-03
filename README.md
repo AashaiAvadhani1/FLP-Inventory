@@ -32,6 +32,8 @@ This allows us to keep all your project dependencies (or `pip modules`) in isola
 
 * If you created some new models:
   * `python manage.py makemigrations inventory` && `python manage.py migrate`
+* If you added new static items like images or CSS files:
+  * `python manage.py collectstatic`
 * Run the app: `python manage.py runserver` ~> <a href="http://localhost:8000/">localhost:8000</a>
 
 <hr></hr>
@@ -55,6 +57,11 @@ This allows us to keep all your project dependencies (or `pip modules`) in isola
 
 * `python manage.py drop`
 	* Destroys all objects 
+
+###### Static
+* `python manage.py collectstatic
+	* Updates static items i.e. if any images or CSS files are added 
+	* Needs to be run to access new static resources
 
 ###### Outdate-mapping
 Use only when all of below is true:
