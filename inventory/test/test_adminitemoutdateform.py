@@ -18,39 +18,39 @@ class AddItemFormTestCase(TestCase):
         self.assertFalse(form.is_valid())
 
         self.assertEqual(
-            form.errors["item_old"], ["This field is required."]
+            form.errors["Old_item"], ["This field is required."]
         )
 
     def test_invalid_does_not_exist(self):
-        form = AdminItemOutdateForm(data={"item_old": "InvalidItem", "item_new": "NewItem"})
+        form = AdminItemOutdateForm(data={"Old_item": "InvalidItem", "New_item": "NewItem"})
 
         self.assertFalse(form.is_valid())
 
         self.assertEqual(
-            form.errors["item_old"], ["Item does not exist."]
+            form.errors["Old_item"], ["This Old Item does not exist."]
         )
         
     def test_invalid_outdated_old_item(self):
-        form = AdminItemOutdateForm(data={"item_old": "OutdatedItem", "item_new": "NewItem"})
+        form = AdminItemOutdateForm(data={"Old_item": "OutdatedItem", "New_item": "NewItem"})
 
         self.assertEqual(
-            form.errors["item_old"], ["Item must not be outdated."]
+            form.errors["Old_item"], ["Item must not be outdated."]
         )
         
     def test_invalid_outdated_new_item(self):
-        form = AdminItemOutdateForm(data={"item_old": "OldItem", "item_new": "OutdatedItem"})
+        form = AdminItemOutdateForm(data={"Old_item": "OldItem", "New_item": "OutdatedItem"})
 
         self.assertEqual(
-            form.errors["item_new"], ["Item must not be outdated."]
+            form.errors["New_item"], ["Item must not be outdated."]
         )
 
     def test_valid(self):
-        form = AdminItemOutdateForm(data={"item_old": "OldItem", "item_new": "NewItem"})
+        form = AdminItemOutdateForm(data={"Old_item": "OldItem", "New_item": "NewItem"})
 
         self.assertTrue(form.is_valid())
 
     def test_run(self):
-        form = AdminItemOutdateForm(data={"item_old": "OldItem", "item_new": "NewItem"})
+        form = AdminItemOutdateForm(data={"Old_item": "OldItem", "New_item": "NewItem"})
         self.assertTrue(form.is_valid())
         form.run()
 
