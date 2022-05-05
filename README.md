@@ -72,6 +72,9 @@ Some examples of recognizable names are: jacket (kid boy), pajamas/pj's (baby gi
 * `python manage.py trans`
 	*  Mark certain items as outdated
 	*  Add quantity of the outdated items to mapped items 
+* `python manage.py quantity`
+	* If any item quantities happen to go under 0, it sets them to 0
+	* Issue that causes negative numbers, should be fixed, but useful script in case database has a mishap. 
 
 ### Test Suite 
 
