@@ -402,6 +402,15 @@ def refresh_session_keys(request):
 ######################### ANALYTICS #########################
 
 # Handles analytics page
+    """ Loads the analytics page and has helper functions that query the type of item/category
+    for each product. Rendered analytics page.
+
+    Raises:
+        Exception: None
+
+    Returns:
+        _type_: context and generated webpage
+    """
 @login_required(login_url='login')
 def analytics(request):
     context = {}
