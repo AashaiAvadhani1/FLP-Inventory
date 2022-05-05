@@ -39,15 +39,15 @@
   <script type="text/javascript">
     $(document).ready(function(){
       // -------------- ITEM SCRIPTS: --------------
-      const myVarName = "{{ item }}"
+      
       $(function() {
-          $("#id_item_old").val(myVarName);
+          $("#id_Old_item").val("{{ item }}");
       });
-      $("#id_item_old").autocomplete({
+      $("#id_Old_item").autocomplete({
         source: '{% url "autocomplete_item" %}',
         minLength: 2
       });
-      $("#id_item_new").autocomplete({
+      $("#id_New_item").autocomplete({
         source: '{% url "autocomplete_item" %}',
         minLength: 2
       })
