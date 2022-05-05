@@ -635,7 +635,7 @@ def createItem_action(request, location):
         item.save()
 
         if location == 'in' or location == 'out':
-            request.session["itemInfo"] = (item.name, item.quantity, 0)
+            request.session["itemInfo"] = (item.name, item.quantity)
             messages.success(request, 'Item created')
             return redirect(reverse('Check' + location))
         else:
@@ -664,14 +664,13 @@ def checkin_action(request):
     
     if request.method == 'GET':
         addItemForm = AddItemForm()
+        #If a new item has been created on the check-in page, 
+        #then once item has been created, fill out the checkin box with item info
         if ('itemInfo' in request.session):
             itemInfo = request.session['itemInfo']
             addItemForm.fields['item'].initial = itemInfo[0]
             addItemForm.fields['new_quantity'].initial = itemInfo[1]
-            if (len(itemInfo) >= 3): 
-                addItemForm.fields['used_quantity'].initial = itemInfo[2]
-            else:
-                addItemForm.fields['used_quantity'].initial = 0
+            addItemForm.fields['used_quantity'].initial = 0
             del request.session['itemInfo']
 
         context['formadditem'] = addItemForm
@@ -682,6 +681,7 @@ def checkin_action(request):
 
         context['formadditem'] = form
 
+        # if item added to cart incorrectly, return to checkin page
         if not form.is_valid():
             return render(request, 'inventory/checkin.html', context)
 
@@ -691,11 +691,14 @@ def checkin_action(request):
 
         item = Item.objects.filter(name=name).first()
     
+        # pull up previous items in cart or create new cart
         if not 'transactions-in' in request.session or not request.session['transactions-in']:
             saved_list = []
         else:
             saved_list = request.session['transactions-in']
 
+        # add new items to cart--if both new and used of same item type are being 
+        # checked out, add as two separate items
         if used_quantity is not None:
             used_tx = serializers.serialize("json", [ ItemTransaction(item=item, quantity=used_quantity, is_new=False, ), ])
             saved_list.append(used_tx)
@@ -703,6 +706,7 @@ def checkin_action(request):
         if new_quantity is not None:
             new_tx = serializers.serialize("json", [ ItemTransaction(item=item, quantity=new_quantity, is_new=True, ), ])
             saved_list.append(new_tx)
+
         request.session['transactions-in'] = saved_list
 
         return redirect(reverse('Checkin'))
@@ -712,12 +716,14 @@ def checkin_action(request):
             messages.warning(request, 'Could not create checkin: No items added')
             return render(request, 'inventory/checkin.html', context, status=400)
 
+        # create checkin, adding notes if needed
         if 'checkin_notes' in request.POST and len(request.POST['checkin_notes']) > 0: 
             checkin = Checkin(user=request.user, notes=request.POST['checkin_notes'])
         else: 
             checkin = Checkin(user=request.user)
         checkin.save()
 
+        # add all transactions to checkin, if multiple of same item, do not make multiple copies
         for tx in transactions:
             tx.save()
 
@@ -759,20 +765,19 @@ def checkout_action(request):
         form = CheckOutForm()
         context['formcheckout'] = form
 
+        # if new family was created, make the cart be of new family
         if ('createdFamily' in request.session):
             famName = request.session['createdFamily']
             form.fields['family'].initial = famName
             context['createdFamily'] = famName
             del request.session['createdFamily']
 
+        # if new item was created, add the new item to the add to cart fields
         if ('itemInfo' in request.session):
             itemInfo = request.session['itemInfo']
             addItemForm.fields['item'].initial = itemInfo[0]
             addItemForm.fields['new_quantity'].initial = itemInfo[1]
-            if (len(itemInfo) >= 3): 
-                addItemForm.fields['used_quantity'].initial = itemInfo[2]
-            else:
-                addItemForm.fields['used_quantity'].initial = 0
+            addItemForm.fields['used_quantity'].initial = 0
             del request.session['itemInfo']
 
         return render(request, 'inventory/checkout.html', context)
@@ -783,21 +788,24 @@ def checkout_action(request):
         context['formadditem'] = form
         context['formcheckout'] = CheckOutForm()
 
+        # go back to checkout page if item was added incorrectly
         if not form.is_valid():
             return render(request, 'inventory/checkout.html', context)
 
-        # category = form.cleaned_data['category']
         name = form.cleaned_data['item']
         used_quantity = form.cleaned_data['used_quantity']
         new_quantity = form.cleaned_data['new_quantity']
 
         item = Item.objects.filter(name=name).first()
 
+        # pull up previous cart items or create new cart
         if not 'transactions-out' in request.session or not request.session['transactions-out']:
             saved_list = []
         else:
             saved_list = request.session['transactions-out']
 
+        # add new items to cart--if both new and used of same item type are 
+        # being checked out, add as two separate items
         if used_quantity is not None:
             used_tx = serializers.serialize("json", [ ItemTransaction(item=item, quantity=used_quantity, is_new=False, ), ])
             saved_list.append(used_tx)
@@ -805,6 +813,7 @@ def checkout_action(request):
         if new_quantity is not None:
             new_tx = serializers.serialize("json", [ ItemTransaction(item=item, quantity=new_quantity, is_new=True, ), ])
             saved_list.append(new_tx)
+
         request.session['transactions-out'] = saved_list
 
         return redirect(reverse('Checkout'))
@@ -824,10 +833,12 @@ def checkout_action(request):
 
         family_object = Family.objects.filter(displayName__exact=family)
 
+        # if no items in cart, return 400 error
         if not transactions:
             messages.warning(request, 'Could not create checkout: No items added')
             return render(request, 'inventory/checkout.html', context, status=400)
 
+        # add notes to checkout object if necessary
         notes = None
         if 'checkout_notes' in request.POST and request.POST['checkout_notes'] != '': 
             notes = request.POST['checkout_notes']
